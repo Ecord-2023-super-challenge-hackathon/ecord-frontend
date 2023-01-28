@@ -10,7 +10,6 @@ const colors = {
   blue: '#4a90e2',
   lightRed: 'rgba(231, 109, 123, 0.8)',
   yellow: '#fad77e',
-  darkYellow: '#ecb834',
 };
 
 const shadow = {
