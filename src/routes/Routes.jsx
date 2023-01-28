@@ -6,7 +6,7 @@ import Intro from '../pages/Intro/Intro';
 const Router = () => (
   <BrowserRouter>
     <Routes>
-      <Route exact path='/' element={<Main />} />
+      <Route exact path='/main' element={<Main />} />
       <Route exact path='/intro' element={<Intro />} />
       <Route exact path='/login' element={<Login />} />
     </Routes>
