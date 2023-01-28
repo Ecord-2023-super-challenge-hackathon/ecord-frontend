@@ -50,6 +50,7 @@ const EachWrapper = styled.div`
   }
 `;
 
+//클릭시 페이지 이동할 네이게이트 함수
 const Footer_Navigate = () => {
   const navigate = useNavigate();
 
@@ -57,6 +58,7 @@ const Footer_Navigate = () => {
     navigate('/');
   };
 
+  //클릭시 색을 바꿀때 이를 담당하는 색깔 변수들
   const [home_Color, setHome_Color] = React.useState('#1D1E1F');
   const [cal_Color, setCal_Color] = React.useState('#1D1E1F');
   const [my_Color, setMy_Color] = React.useState('#1D1E1F');
