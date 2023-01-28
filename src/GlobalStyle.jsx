@@ -7,7 +7,8 @@ const GlobalStyle = createGlobalStyle`
   html, body, #root {
       width: 100vw;
       height: 100vh;
-      background-color: ${(props) => props.theme.colors.backgroundBlue};
+      background-color: ${(props) => props.theme.colors.lightGray};
+      ${(props) => props.theme.flex.flexCenter}
   }
 
   @font-face {
