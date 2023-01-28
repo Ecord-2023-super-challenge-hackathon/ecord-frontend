@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { MdEmail, MdLock } from 'react-icons/md';
 
 const InputWrapper = styled.div`
-  background-color: #edf0f7; //
+  background-color: #edf0f7; // d
   display: flex;
   align-items: center;
 
