@@ -7,6 +7,7 @@ const colors = {
   white: '#ffffff',
   backgroundWhite: '#ffffff',
   mainGreen: '#05BE70',
+  lightGreen: '#7ddab3',
 };
 
 const shadow = {
