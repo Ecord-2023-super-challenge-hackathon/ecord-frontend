@@ -12,13 +12,19 @@ const Typography = styled.p`
   ${(props) => props.SmallText2 && props.theme.font.SmallText2}
   ${(props) => props.ContentText && props.theme.font.ContentText}
   ${(props) => props.FooterText && props.theme.font.FooterText}
+  ${(props) => props.subTitle && props.theme.font.subTitle}
   ${(props) => props.SmallTitleText && props.theme.font.SmallTitleText}
   ${(props) => props.TooSmallText && props.theme.font.TooSmallText}
   ${(props) => props.receiptSmall && props.theme.font.receiptSmall}
   ${(props) => props.receiptTitle && props.theme.font.receiptTitle}
   ${(props) => props.receiptVerySmall && props.theme.font.receiptVerySmall}
   ${(props) => props.receiptTotal && props.theme.font.receiptTotal}
+<<<<<<< HEAD
   ${(props) => props.BoldText && props.theme.font.BoldText}
+=======
+  ${(props) => props.favoriteSmall && props.theme.font.favoriteSmall}
+  ${(props) => props.favoriteVerySmall && props.theme.font.favoriteVerySmall}
+>>>>>>> 4396e361cde8982ed4db59871817676620e163d7
 `;
 
 export default Typography;

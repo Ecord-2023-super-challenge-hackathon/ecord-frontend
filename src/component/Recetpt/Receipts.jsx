@@ -8,7 +8,6 @@ const ReceiptContainer = styled.div`
   flex-wrap: nowrap;
   overflow-x: auto;
   gap: 15px;
-
   padding: 20px;
 `;
 

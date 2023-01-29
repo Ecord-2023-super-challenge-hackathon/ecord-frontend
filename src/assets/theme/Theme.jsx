@@ -11,6 +11,7 @@ const colors = {
   receiptGray: '#AAB0B6',
   receiptLine: '#D6DCE2',
   darkGreen: '#1E8D73',
+  favoriteGray: '#6F7276',
 };
 
 const shadow = {
@@ -21,24 +22,29 @@ const shadow = {
 
 const font = {
   Title: `
+      font-family: 'Pretendard-regular';
       font-weight: 700;
       font-size: 32px;
       line-height: 40px;
     `,
   MainTitle: `
+      font-family: 'Pretendard-regular';
       font-weight: 700;
       font-size: 18px;
       line-height: 27px;
     `,
   InputText: `
+      font-family: 'Pretendard-regular';
       font-weight: 500;
       font-size: 15px;
     `,
   ButtonText: `
+      font-family: 'Pretendard-regular';
       font-weight: 700;
       font-size: 15px;
     `,
   SmallText: `
+      font-family: 'Pretendard-regular';
       font-weight: 400;
       font-size: 12px;
       line-height: 17px;
@@ -48,18 +54,22 @@ const font = {
     font-size: 12px;
   `,
   ContentText: `
+      font-family: 'Pretendard-regular';
       font-weight: 500;
       font-size: 14px;
       line-height: 20px;
     `,
   FooterText: `
+      font-family: 'Pretendard-regular';
       font-weight: 400;
       font-size: 10px;
     `,
   SmallTitleText: `
+      font-family: 'Pretendard-regular';
     font-weight: 700;
     font-size: 16px;
   `,
+<<<<<<< HEAD
   TooSmallText: `
     font-weight: 400;
     font-size: 9px;
@@ -67,6 +77,54 @@ const font = {
   BoldText: `
   font-weight: 700;
   font-size: 12px;
+=======
+  favoriteSmall: `
+      font-family: 'Pretendard-regular';
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 13px;
+  `,
+  favoriteVerySmall: `
+      font-family: 'Pretendard-regular';
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 13px;
+  `,
+  subTitle: `
+      font-family: 'Pretendard-regular';
+   font-weight: 700;
+   font-size: 16px;
+   line-height: 13px;
+  `,
+  receiptTitle: `
+  font-family: 'Pretendard-regular';
+    font-weight: 700;
+    font-size: 13px;
+    line-height: 16px;  
+  `,
+
+  receiptTotal: `
+  font-family: 'Pretendard-regular';
+    font-weight: 600;
+    font-size: 11px;
+    line-height: 16px;
+  `,
+
+  receiptSmall: `
+  font-family: 'Pretendard-regular';
+    font-weight: 600;
+    font-size: 10px;
+    line-height: 16px;
+    color: ${colors.receiptGray};
+  `,
+
+  receiptVerySmall: `
+  font-family: 'Pretendard-regular';
+    font-weight: 400;
+    font-size: 8px;
+    line-height: 16px;
+    color: ${colors.receiptGray};
+>>>>>>> 4396e361cde8982ed4db59871817676620e163d7
   `,
 };
 

@@ -6,9 +6,8 @@ const GlobalStyle = createGlobalStyle`
   
   html, body, #root {
       height: 100vh; /* 혹시나 Custom Property 지원 안하는 브라우저를 위한 복귀점(Fallback) */
-      width: 100%;
+      width: 100vw;
       background-color: ${(props) => props.theme.colors.lightGray};
-      ${(props) => props.theme.flex.flexCenter}
   }
 
   body{
@@ -18,34 +17,15 @@ const GlobalStyle = createGlobalStyle`
     display: none;
   }
 
-
-
   @font-face {
-    font-family: 'Pretendard';
-    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Bold.woff') format('woff');
-    font-weight: 700;
-  }
-
-  @font-face {
-    font-family: 'Pretendard';
-    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-SemiBold.woff') format('woff');
-    font-weight: 600;
-  }
-
-  @font-face {
-    font-family: 'Pretendard';
-    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Medium.woff') format('woff');
-    font-weight: 500;
-  }
-
-  @font-face {
-    font-family: 'Pretendard';
+    font-family: 'Pretendard-Regular';
     src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
     font-weight: 400;
-  }
+    font-style: normal;
+}
   
   * {
-    font-family: 'Pretendard';
+    font-family: 'Pretendard-regular';
     box-sizing: border-box;
     outline: none;
     margin: 0;
