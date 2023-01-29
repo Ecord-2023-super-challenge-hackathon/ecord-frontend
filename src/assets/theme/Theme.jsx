@@ -11,6 +11,7 @@ const colors = {
   receiptGray: '#AAB0B6',
   receiptLine: '#D6DCE2',
   darkGreen: '#1E8D73',
+  favoriteGray: '#6F7276',
 };
 
 const shadow = {
@@ -81,6 +82,16 @@ const font = {
     font-size: 8px;
     line-height: 16px;
     color: ${colors.receiptGray};
+  `,
+  favoriteSmall: `
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 13px;
+  `,
+  favoriteVerySmall: `
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 13px;
   `,
 };
 

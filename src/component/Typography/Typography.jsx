@@ -16,6 +16,8 @@ const Typography = styled.p`
   ${(props) => props.receiptTitle && props.theme.font.receiptTitle}
   ${(props) => props.receiptVerySmall && props.theme.font.receiptVerySmall}
   ${(props) => props.receiptTotal && props.theme.font.receiptTotal}
+  ${(props) => props.favoriteSmall && props.theme.font.favoriteSmall}
+  ${(props) => props.favoriteVerySmall && props.theme.font.favoriteVerySmall}
 `;
 
 export default Typography;

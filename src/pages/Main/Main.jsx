@@ -7,6 +7,7 @@ import axios from 'axios';
 
 const Main = () => {
   const [receipts, setReceipts] = useState([]);
+  const [favorites, setFavorites] = useState([]);
 
   useEffect(() => {
     const user_index = localStorage.getItem('user_index');
@@ -20,13 +21,24 @@ const Main = () => {
         console.log(r.data);
         setReceipts(r.data);
       });
+
+    axios
+      .get(`${process.env.REACT_APP_API}/users/${user_index}/favorite-food`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+      })
+      .then((r) => {
+        console.log(r.data);
+        setFavorites(r.data);
+      });
   }, []);
 
   return (
     <Layout>
       <FooterNavigate />
       <Receipts receipts={receipts} />
-      <MainFooter />
+      <MainFooter favorites={favorites} />
     </Layout>
   );
 };
