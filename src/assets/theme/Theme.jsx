@@ -52,36 +52,9 @@ const font = {
       font-weight: 400;
       font-size: 10px;
     `,
-<<<<<<< HEAD
   SmallTitleText: `
     font-weight: 700;
     font-size: 16px;
-=======
-  receiptTitle: `
-    font-weight: 700;
-    font-size: 13px;
-    line-height: 16px;  
-  `,
-
-  receiptTotal: `
-    font-weight: 600;
-    font-size: 11px;
-    line-height: 16px;
-  `,
-
-  receiptSmall: `
-    font-weight: 600;
-    font-size: 10px;
-    line-height: 16px;
-    color: ${colors.receiptGray};
-  `,
-
-  receiptVerySmall: `
-    font-weight: 400;
-    font-size: 8px;
-    line-height: 16px;
-    color: ${colors.receiptGray};
->>>>>>> dee791c8e0fa183b550ce8383c642f9e5cc408c1
   `,
 };
 

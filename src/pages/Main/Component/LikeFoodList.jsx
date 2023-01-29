@@ -6,6 +6,7 @@ const Wrapper = styled.div`
   width: 100%;
   //나중에 auto로 바꾸기
   height: 300px;
+  margin-top: 30px;
 `;
 
 //제목 정렬을 위한 Wrapper

@@ -2,11 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 import Typography from '../../../component/Typography/Typography';
 import { IoIosArrowForward } from 'react-icons/io';
+import Receipts from '../../../component/Recetpt/Receipts';
 //요약 정보를 담는 전체적인 Wrapper
 const Wrapper = styled.div`
   width: 100%;
   //나중에 auto로 바꾸기
-  height: 256px;
+  height: auto;
 `;
 //제목 정렬을 위한 Wrapper
 const TitleWrapper = styled.div`
