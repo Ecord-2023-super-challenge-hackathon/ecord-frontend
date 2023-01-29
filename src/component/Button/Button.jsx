@@ -15,7 +15,7 @@ const StyledButton = styled.button`
     css`
       transition: 0.5s;
       :hover {
-        background-color: ${(props) => props.theme.colors.lightGreen};
+        background-color: ${(props) => props.theme.colors.darkGreen};
         transition: 0.5s;
       }
     `}
