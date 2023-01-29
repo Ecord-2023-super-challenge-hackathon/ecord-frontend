@@ -7,6 +7,7 @@ import { ReactComponent as Ecord } from '../../assets/svg/Ecord.svg';
 import { ReactComponent as Intro_Image } from '../../assets/svg/Intro_Image.svg';
 import Receipt from '../../component/Recetpt/Receipt';
 import axios from 'axios';
+import Receipts from '../../component/Recetpt/Receipts';
 
 const Main = () => {
   const [receipts, setReceipts] = useState([]);
@@ -28,10 +29,7 @@ const Main = () => {
   return (
     <Layout>
       <FooterNavigate />
-      {receipts.map((data) => {
-        console.log(data);
-        return <Receipt data={data} key={data.receipt_index} />;
-      })}
+      <Receipts receipts={receipts} />
     </Layout>
   );
 };
