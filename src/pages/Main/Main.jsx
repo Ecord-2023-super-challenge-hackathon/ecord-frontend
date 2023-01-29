@@ -6,9 +6,11 @@ import Receipts from '../../component/Recetpt/Receipts';
 import SummaryInfo from './Component/SummaryInfo';
 import RecentReciept from './Component/RecentReciept';
 import Margin from '../../component/Margin/Margin';
+import Pusher from 'pusher-js';
 import axios from 'axios';
 
 const Main = () => {
+  const [state, setState] = useState();
   const [receipts, setReceipts] = useState([]);
   const [favorites, setFavorites] = useState([]);
 
@@ -36,6 +38,16 @@ const Main = () => {
         console.log(r.data);
         setFavorites(r.data);
       });
+
+    const pusher = new Pusher('355b90c48a1eaff96f03', {
+      cluster: 'ap3',
+      encrypted: true,
+    });
+    const channel = pusher.subscribe('chat');
+    channel.bind('message', (data) => {
+      setState(data);
+    });
+    console.log(state);
   }, []);
 
   return (
