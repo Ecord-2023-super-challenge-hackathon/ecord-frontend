@@ -13,6 +13,7 @@ import { saveAs } from 'file-saver';
 import domToImage from 'dom-to-image';
 import Stickers from '../../component/Stickers/Stickers';
 import emptyImg from './EmptyImg.png';
+import temp from './monitor-g0dc03eb6e_640.jpg';
 
 const Sticker = styled(motion.img)`
   cursor: pointer;
@@ -51,6 +52,7 @@ const ReceiptPaper = styled.div`
 `;
 
 const ImgSection = styled.div`
+  cursor: pointer;
   width: 236px;
   height: 124px;
   margin-top: 24px;
@@ -119,6 +121,24 @@ const ReceiptDetail = () => {
       });
   }, []);
 
+  const postImage = () => {
+    const user_index = localStorage.getItem('user_index');
+
+    axios
+      .post(
+        `${process.env.REACT_APP_API}/users/${user_index}/receipts/${receiptIndex}/image`,
+        {
+          body: temp,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('token')}`,
+          },
+        },
+      )
+      .then((r) => console.log(r));
+  };
+
   return (
     <Layout>
       <div className='card' ref={cardRef} style={{ position: 'relative' }}>
@@ -156,7 +176,7 @@ const ReceiptDetail = () => {
           </TitleWrapper>
           <ReceiptPaper>
             <ImgWrapper>
-              <ImgSection>
+              <ImgSection onClick={postImage}>
                 {receiptDetail.content_img_url ? (
                   <Img
                     className='receiptImg'
