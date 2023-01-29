@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Typography from '../../../component/Typography/Typography';
 import { IoIosArrowForward } from 'react-icons/io';
-import Receipts from '../../../component/Recetpt/Receipts';
+import Receipts from '../../../component/Receipt/Receipts';
 //요약 정보를 담는 전체적인 Wrapper
 const Wrapper = styled.div`
   width: 100%;

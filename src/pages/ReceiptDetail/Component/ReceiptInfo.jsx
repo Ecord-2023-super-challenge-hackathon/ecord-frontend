@@ -26,16 +26,8 @@ const MenuWrapper = styled.div`
   border-bottom: 1px dashed #dad7d4;
 `;
 
-const ReceiptInfo = () => {
-  const [address, setAddress] = useState('인천광역시 미추홀구 인하로 53');
-  const [storeName, setStoreName] = useState('카페삼층 인하대점');
-
-  const MenuList = [
-    { menuName: 'T)제주유기농말차', menuEachPrice: '6300', menuCount: '1', menuTotalPrice: '6300' },
-    { menuName: 'S)에스프레소', menuEachPrice: '6300', menuCount: '1', menuTotalPrice: '6300' },
-    { menuName: 'S)자몽홍차레몬티', menuEachPrice: '4300', menuCount: '2', menuTotalPrice: '8600' },
-    { menuName: '딸기생크림케이크', menuEachPrice: '6300', menuCount: '1', menuTotalPrice: '6300' },
-  ];
+const ReceiptInfo = (props) => {
+  const MenuList = props.MenuList;
 
   let MenuView = MenuList.map((v) => (
     <Menu
@@ -50,10 +42,10 @@ const ReceiptInfo = () => {
     <>
       <Wrapper>
         <Typography TooSmallText color='receiptGray'>
-          {address}
+          {props.address}
         </Typography>
         <TitleMargin>
-          <Typography>{storeName}</Typography>
+          <Typography>{props.storeName}</Typography>
         </TitleMargin>
         <MenuWrapper>{MenuView}</MenuWrapper>
       </Wrapper>

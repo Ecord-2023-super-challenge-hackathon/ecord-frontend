@@ -23,25 +23,21 @@ const EachWrapper = styled.div`
   margin-bottom: 10px;
 `;
 
-const VatInfo = () => {
-  const [taxablePrice, settaxablePrice] = useState('27,872');
-  const [vat, setVat] = useState('228');
-  const [totalVat, setTotalVat] = useState('28,100');
-
+const VatInfo = (props) => {
   return (
     <>
       <Wrapper>
         <EachWrapper>
           <Typography SmallText2>과세물품가액</Typography>
-          <Typography SmallText2>{taxablePrice}</Typography>
+          <Typography SmallText2>{props.taxablePrice}</Typography>
         </EachWrapper>
         <EachWrapper>
           <Typography SmallText2>부가세</Typography>
-          <Typography SmallText2>{vat}</Typography>
+          <Typography SmallText2>{props.vat}</Typography>
         </EachWrapper>
         <EachWrapper>
           <Typography BoldText>합계</Typography>
-          <Typography BoldText>{totalVat}</Typography>
+          <Typography BoldText>{props.totalVat}</Typography>
         </EachWrapper>
       </Wrapper>
     </>

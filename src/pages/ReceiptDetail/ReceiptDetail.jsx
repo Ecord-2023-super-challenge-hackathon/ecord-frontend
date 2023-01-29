@@ -57,8 +57,24 @@ const AlignWrapper = styled.div`
 
 const Img = styled.img``;
 
-const ReceiptDetail = () => {
+const ReceiptDetail = (props) => {
+  //이미지 URL 변수 -> 아직 기능 구현 안됨.
   const [imgURL, setImgURL] = useState('img/EmptyImg.png');
+
+  const [address, setAddress] = useState('인천광역시 미추홀구 인하로 53');
+  const [storeName, setStoreName] = useState('카페삼층 인하대점');
+
+  //구매한 물품, 가격 등등을 나타내는 배열
+  const MenuList = [
+    { menuName: 'T)제주유기농말차', menuEachPrice: '6300', menuCount: '2', menuTotalPrice: '6300' },
+    { menuName: 'S)에스프레소', menuEachPrice: '6300', menuCount: '1', menuTotalPrice: '6300' },
+    { menuName: 'S)자몽홍차레몬티', menuEachPrice: '4300', menuCount: '2', menuTotalPrice: '8600' },
+    { menuName: '딸기생크림케이크', menuEachPrice: '6300', menuCount: '1', menuTotalPrice: '6300' },
+  ];
+
+  const [taxablePrice, settaxablePrice] = useState('27,872');
+  const [vat, setVat] = useState('228');
+  const [totalVat, setTotalVat] = useState('28,100');
 
   return (
     <>
@@ -76,8 +92,8 @@ const ReceiptDetail = () => {
           </ImgWrapper>
 
           <AlignWrapper>
-            <ReceiptInfo />
-            <VatInfo />
+            <ReceiptInfo address={address} storeName={storeName} MenuList={MenuList} />
+            <VatInfo taxablePrice={taxablePrice} vat={vat} totalVat={totalVat} />
             <CardInfo />
           </AlignWrapper>
         </ReceiptPaper>

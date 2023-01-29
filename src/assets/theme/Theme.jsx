@@ -69,7 +69,6 @@ const font = {
     font-weight: 700;
     font-size: 16px;
   `,
-<<<<<<< HEAD
   TooSmallText: `
     font-weight: 400;
     font-size: 9px;
@@ -77,9 +76,9 @@ const font = {
   BoldText: `
   font-weight: 700;
   font-size: 12px;
-=======
+  `,
   favoriteSmall: `
-      font-family: 'Pretendard-regular';
+    font-family: 'Pretendard-regular';
     font-weight: 600;
     font-size: 13px;
     line-height: 13px;
@@ -124,7 +123,6 @@ const font = {
     font-size: 8px;
     line-height: 16px;
     color: ${colors.receiptGray};
->>>>>>> 4396e361cde8982ed4db59871817676620e163d7
   `,
 };
 
