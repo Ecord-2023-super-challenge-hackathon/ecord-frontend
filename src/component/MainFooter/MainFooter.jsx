@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import Margin from '../Margin/Margin';
 import Typography from '../Typography/Typography';
 import Flex from '../Flex/Flex';
-import { ReactComponent as Starbucks } from '../../assets/svg/Starbucks.svg';
 
 const Wrapper = styled.div`
   width: 100%;
@@ -10,7 +9,10 @@ const Wrapper = styled.div`
   padding-right: 26px;
 `;
 
-const FlexContainer = styled(Flex)``;
+const FlexContainer = styled(Flex)`
+  ${(props) => props.theme.flex.flexCenter}
+  justify-content: space-between;
+`;
 
 const LogoWrapper = styled.div`
   width: 73px;
@@ -21,17 +23,26 @@ const LogoWrapper = styled.div`
   vertical-align: middle;
 `;
 
-const MainFooter = () => {
+const Photo = styled.img`
+  height: 34px;
+  width: 34px;
+  border-radius: 100%;
+`;
+
+const MainFooter = ({ data }) => {
+  const { brand_name, receipt_img_url, product_name, ea, date, total_cost } = data;
+
   return (
     <Wrapper>
       <Typography SubTitle>요즘 내가 빠진 음식</Typography>
       <Margin height='14' />
-      <Flex>
-        <LogoWrapper color='#C6DED4'>
-          <Starbucks width='32' />
-        </LogoWrapper>
-      </Flex>
-      <Starbucks />
+      <FlexContainer>
+        <Flex>
+          <LogoWrapper color='#C6DED4'>
+            <Photo src={`${process.env.REACT_APP_API}${receipt_img_url}`} />
+          </LogoWrapper>
+        </Flex>
+      </FlexContainer>
     </Wrapper>
   );
 };

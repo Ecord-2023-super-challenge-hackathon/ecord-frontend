@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Layout from '../../component/Layout/Layout';
 import FooterNavigate from '../../component/FooterNavigate';
 import MainFooter from '../../component/MainFooter/MainFooter';
-import Receipts from '../../component/Receipts/Receipts';
+import Receipts from '../../component/Recetpt/Receipts';
 import axios from 'axios';
 
 const Main = () => {
@@ -26,6 +26,7 @@ const Main = () => {
     <Layout>
       <FooterNavigate />
       <Receipts receipts={receipts} />
+      <MainFooter />
     </Layout>
   );
 };
