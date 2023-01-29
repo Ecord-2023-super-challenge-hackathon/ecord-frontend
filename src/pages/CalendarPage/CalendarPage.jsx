@@ -9,8 +9,12 @@ import FooterNavigate from '../../component/FooterNavigate';
 
 const InfoWrapper = styled.div`
   width: 100%;
-  height: 70%;
+  height: 60%;
   background-color: #f3f9f6;
+`;
+
+const Container = styled.div`
+  width: 312px;
 `;
 
 const CalendarPage = () => {
@@ -20,7 +24,9 @@ const CalendarPage = () => {
       <Margin height='20' />
       <Calendar onChange={onChange} value={value} locale='en' />
       <Margin height='20' />
-      <InfoWrapper></InfoWrapper>
+      <InfoWrapper>
+        <Margin height='22' />
+      </InfoWrapper>
       <FooterNavigate />
     </Layout>
   );
