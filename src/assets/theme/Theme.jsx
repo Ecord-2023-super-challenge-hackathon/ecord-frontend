@@ -12,6 +12,7 @@ const colors = {
   receiptLine: '#D6DCE2',
   darkGreen: '#1E8D73',
   favoriteGray: '#6F7276',
+  PayDayColor: '#A4A4B8',
 };
 
 const shadow = {

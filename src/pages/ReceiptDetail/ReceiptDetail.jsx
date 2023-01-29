@@ -14,6 +14,8 @@ import domToImage from 'dom-to-image';
 import Stickers from '../../component/Stickers/Stickers';
 import emptyImg from './EmptyImg.png';
 import temp from './monitor-g0dc03eb6e_640.jpg';
+import { useNavigate } from 'react-router-dom';
+import Deco from './DecoButton.png';
 
 const Sticker = styled(motion.img)`
   cursor: pointer;
@@ -73,6 +75,27 @@ const ImgWrapper = styled.div`
 const AlignWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
+`;
+
+const DecoButton = styled.button`
+  width: 58px;
+  height: 58px;
+  background-color: #328e8e;
+  border-radius: 100%;
+  position: absolute;
+  left: 300px;
+  top: 630px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+`;
+
+const ButtonImg = styled.img`
+  width: 34px;
+  height: 34px;
+  margin-top: 3px;
+  margin-left: 3px;
 `;
 
 const Img = styled.img``;
@@ -137,6 +160,10 @@ const ReceiptDetail = () => {
         },
       )
       .then((r) => console.log(r));
+  const navigate = useNavigate();
+
+  const navigateToBefore = () => {
+    navigate('/main');
   };
 
   return (
@@ -149,9 +176,7 @@ const ReceiptDetail = () => {
           setStickerOnList={setStickerOnList}
           stickerOnList={stickerOnList}
         />
-        <button type='button' onClick={() => setOnSticker(!onSticker)}>
-          스티커 키자
-        </button>
+
         {stickerOnList.map(
           (a, i) =>
             a && (
@@ -169,7 +194,7 @@ const ReceiptDetail = () => {
         )}
 
         <AllWrapper>
-          <TitleWrapper>
+          <TitleWrapper onClick={navigateToBefore}>
             <FiArrowLeft size={22} />
             <Typography SmallTitleText>영수증 상세보기</Typography>
             <FiDownload size={20} className='downBtn' onClick={onDownloadBtn} />
@@ -210,6 +235,9 @@ const ReceiptDetail = () => {
               />
             </AlignWrapper>
           </ReceiptPaper>
+          <DecoButton type='button' onClick={() => setOnSticker(!onSticker)}>
+            <ButtonImg src={Deco} />
+          </DecoButton>
         </AllWrapper>
       </div>
     </Layout>
