@@ -48,7 +48,7 @@ const Login = () => {
       <Ecord_Title style={{ marginTop: '160px', marginBottom: '80px' }} />
       <Input name='id' value={user.id} onChange={userHandler} />
       <Input name='password' value={user.password} onChange={userHandler} />
-      <Button hover type='button' onClick={login}>
+      <Button hover type='button' onClick={login} style={{ marginTop: '30px' }}>
         로그인
       </Button>
     </Layout>
