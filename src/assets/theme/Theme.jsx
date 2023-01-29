@@ -49,6 +49,10 @@ const font = {
       font-size: 12px;
       line-height: 17px;
     `,
+  SmallText2: `
+    font-weight: 400;
+    font-size: 12px;
+  `,
   ContentText: `
       font-family: 'Pretendard-regular';
       font-weight: 500;
@@ -65,8 +69,16 @@ const font = {
     font-weight: 700;
     font-size: 16px;
   `,
+  TooSmallText: `
+    font-weight: 400;
+    font-size: 9px;
+  `,
+  BoldText: `
+  font-weight: 700;
+  font-size: 12px;
+  `,
   favoriteSmall: `
-      font-family: 'Pretendard-regular';
+    font-family: 'Pretendard-regular';
     font-weight: 600;
     font-size: 13px;
     line-height: 13px;

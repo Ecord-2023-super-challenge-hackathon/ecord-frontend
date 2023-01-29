@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Layout from '../../component/Layout/Layout';
 import FooterNavigate from '../../component/FooterNavigate';
 import MainFooter from '../../component/MainFooter/MainFooter';
-import Receipts from '../../component/Recetpt/Receipts';
+import Receipts from '../../component/Receipt/Receipts';
 import SummaryInfo from './Component/SummaryInfo';
 import RecentReciept from './Component/RecentReciept';
 import Pusher from 'pusher-js';
