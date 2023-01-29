@@ -196,10 +196,10 @@ const ReceiptDetail = () => {
         )}
 
         <AllWrapper>
-          <TitleWrapper onClick={navigateToBefore}>
-            <FiArrowLeft size={22} />
+          <TitleWrapper>
+            <FiArrowLeft style={{ cursor: 'pointer' }} size={22} onClick={navigateToBefore} />
             <Typography SmallTitleText>영수증 상세보기</Typography>
-            <FiDownload size={20} className='downBtn' onClick={onDownloadBtn} />
+            <FiDownload style={{ cursor: 'pointer' }} size={20} className='downBtn' onClick={onDownloadBtn} />
           </TitleWrapper>
           <ReceiptPaper>
             <ImgWrapper>
