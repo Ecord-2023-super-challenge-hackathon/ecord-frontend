@@ -72,9 +72,21 @@ const ReceiptDetail = (props) => {
     { menuName: '딸기생크림케이크', menuEachPrice: '6300', menuCount: '1', menuTotalPrice: '6300' },
   ];
 
+  //과세물품가액
   const [taxablePrice, settaxablePrice] = useState('27,872');
+  //부가세
   const [vat, setVat] = useState('228');
+  //합계
   const [totalVat, setTotalVat] = useState('28,100');
+
+  //결제 카드 정보
+  const [cardName, setCardName] = useState('0014 현대');
+  //카드 비번
+  const [cardNumber, setCardNumber] = useState('29481293**434**/00312343');
+  // 지불 방법
+  const [payMent, setPayMent] = useState('일시불');
+  // 얼마 지불했는지
+  const [payPrice, setPayPrice] = useState('28,000');
 
   return (
     <>
@@ -94,7 +106,7 @@ const ReceiptDetail = (props) => {
           <AlignWrapper>
             <ReceiptInfo address={address} storeName={storeName} MenuList={MenuList} />
             <VatInfo taxablePrice={taxablePrice} vat={vat} totalVat={totalVat} />
-            <CardInfo />
+            <CardInfo cardName={cardName} cardNumber={cardNumber} payMent={payMent} payPrice={payPrice} />
           </AlignWrapper>
         </ReceiptPaper>
       </AllWrapper>

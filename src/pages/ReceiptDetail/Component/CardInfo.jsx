@@ -19,23 +19,18 @@ const EachWrapper = styled.div`
   justify-content: space-between;
 `;
 
-const CardInfo = () => {
-  const [cardName, setCardName] = useState('0014 현대');
-  const [cardNumber, setCardNumber] = useState('29481293**434**/00312343');
-  const [payMent, setPayMent] = useState('일시불');
-  const [payPrice, setPayPrice] = useState('28,100');
-
+const CardInfo = (props) => {
   return (
     <>
       <Wrapper>
         <EachWrapper>
-          <Typography SmallText2>{cardName}</Typography>
-          <Typography SmallText2>{cardNumber}</Typography>
+          <Typography SmallText2>{props.cardName}</Typography>
+          <Typography SmallText2>{props.cardNumber}</Typography>
         </EachWrapper>
         <EachWrapper>
           <Typography SmallText2>카드결제(IC)</Typography>
           <Typography SmallText2>
-            {payMent},{payPrice}
+            {props.payMent},{props.payPrice}
           </Typography>
         </EachWrapper>
       </Wrapper>
