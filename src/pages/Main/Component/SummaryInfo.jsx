@@ -15,6 +15,7 @@ const TypoWrapper = styled.div`
   width: 100%;
   height: auto;
   padding-left: 22px;
+  padding-right: 22px;
   padding-top: 50px;
 `;
 
@@ -27,7 +28,7 @@ const CarbonTypoWrapper = styled.div`
 
 // 환급금은 관련된 정보를 보여줄 Box
 const InfoBox = styled.div`
-  width: 316px;
+  width: 100%;
   height: 91px;
   margin-top: 25px;
   background-color: #05be70;
@@ -36,6 +37,7 @@ const InfoBox = styled.div`
   align-items: center;
   justify-content: space-around;
 `;
+
 const InfoBoxTypoWrapper = styled.div`
   width: 220px;
   height: auto;
