@@ -18,11 +18,12 @@ const Width = styled.div`
   margin-bottom: 78px;
   align-items: center;
   background-color: ${(props) => props.theme.colors.backgroundWhite};
+  background-color: ${(props) => props.gray && '#f1f1f1'};
 `;
 
-const Layout = ({ children }) => (
+const Layout = ({ children, gray }) => (
   <Background>
-    <Width>{children}</Width>
+    <Width gray={gray}>{children}</Width>
   </Background>
 );
 
