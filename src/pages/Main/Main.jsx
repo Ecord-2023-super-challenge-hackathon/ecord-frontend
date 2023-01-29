@@ -5,12 +5,12 @@ import MainFooter from '../../component/MainFooter/MainFooter';
 import Receipts from '../../component/Receipt/Receipts';
 import SummaryInfo from './Component/SummaryInfo';
 import RecentReciept from './Component/RecentReciept';
-import Margin from '../../component/Margin/Margin';
 import Pusher from 'pusher-js';
 import axios from 'axios';
+import PopReciept from '../../component/PopReciept/PopReciept';
 
 const Main = () => {
-  const [state, setState] = useState();
+  const [state, setState] = useState(undefined);
   const [receipts, setReceipts] = useState([]);
   const [favorites, setFavorites] = useState([]);
 
@@ -24,7 +24,6 @@ const Main = () => {
         },
       })
       .then((r) => {
-        console.log(r.data);
         setReceipts(r.data);
       });
 
@@ -35,10 +34,11 @@ const Main = () => {
         },
       })
       .then((r) => {
-        console.log(r.data);
         setFavorites(r.data);
       });
+  }, []);
 
+  useEffect(() => {
     const pusher = new Pusher('355b90c48a1eaff96f03', {
       cluster: 'ap3',
       encrypted: true,
@@ -48,10 +48,11 @@ const Main = () => {
       setState(data);
     });
     console.log(state);
-  }, []);
+  }, [state]);
 
   return (
     <Layout>
+      <PopReciept state={state} setState={setState} />
       <SummaryInfo />
       <MainFooter favorites={favorites} />
       <RecentReciept />

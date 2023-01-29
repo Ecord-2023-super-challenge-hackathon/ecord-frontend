@@ -14,7 +14,6 @@ const ReceiptContainer = styled.div`
 const Receipts = ({ receipts }) => (
   <ReceiptContainer>
     {receipts.map((data) => {
-      console.log(data);
       return <Receipt data={data} key={data.receipt_index} />;
     })}
   </ReceiptContainer>
