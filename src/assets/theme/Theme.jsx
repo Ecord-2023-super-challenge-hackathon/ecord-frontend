@@ -48,6 +48,10 @@ const font = {
       font-weight: 400;
       font-size: 10px;
     `,
+  SmallTitleText: `
+    font-weight: 700;
+    font-size: 16px;
+  `,
 };
 
 const flex = {
