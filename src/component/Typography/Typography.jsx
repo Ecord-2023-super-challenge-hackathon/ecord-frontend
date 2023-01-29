@@ -12,6 +12,7 @@ const Typography = styled.p`
   ${(props) => props.ContentText && props.theme.font.ContentText}
   ${(props) => props.FooterText && props.theme.font.FooterText}
   ${(props) => props.SubTitle && props.theme.font.SubTitle}
+  ${(props) => props.SmallTitleText && props.theme.font.SmallTitleText}
   ${(props) => props.receiptSmall && props.theme.font.receiptSmall}
   ${(props) => props.receiptTitle && props.theme.font.receiptTitle}
   ${(props) => props.receiptVerySmall && props.theme.font.receiptVerySmall}

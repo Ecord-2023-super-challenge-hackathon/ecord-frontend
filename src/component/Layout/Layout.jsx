@@ -6,6 +6,7 @@ const Background = styled.div`
   height: 100vh;
   display: flex;
   flex-direction: column;
+  margin-bottom: 78px;
   align-items: center;
   background-color: ${(props) => props.theme.colors.backgroundWhite};
 `;

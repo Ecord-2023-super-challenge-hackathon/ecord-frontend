@@ -53,35 +53,10 @@ const font = {
       font-weight: 400;
       font-size: 10px;
     `,
-  SubTitle: `
-      font-weight: 700;
-      font-size: 16px;
-      line-height: 30px;
-    `,
-  receiptTitle: `
+  SmallTitleText: `
+>>>>>>> f250891d8d4a548b3494b237519668d7fc76a80e
     font-weight: 700;
-    font-size: 13px;
-    line-height: 16px;  
-  `,
-
-  receiptTotal: `
-    font-weight: 600;
-    font-size: 11px;
-    line-height: 16px;
-  `,
-
-  receiptSmall: `
-    font-weight: 600;
-    font-size: 10px;
-    line-height: 16px;
-    color: ${colors.receiptGray};
-  `,
-
-  receiptVerySmall: `
-    font-weight: 400;
-    font-size: 8px;
-    line-height: 16px;
-    color: ${colors.receiptGray};
+    font-size: 16px;
   `,
   favoriteSmall: `
     font-weight: 600;
