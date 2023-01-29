@@ -6,7 +6,7 @@ import NotMobile from '../pages/NotMobile/NotMobile';
 
 const Router = () => (
   <BrowserRouter>
-    <NotMobile />
+    {/* <NotMobile /> */}
     <Routes>
       <Route exact path='/main' element={<Main />} />
       <Route exact path='/intro' element={<Intro />} />
