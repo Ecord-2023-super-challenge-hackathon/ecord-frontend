@@ -8,11 +8,13 @@ import RecentReciept from './Component/RecentReciept';
 import Margin from '../../component/Margin/Margin';
 import Pusher from 'pusher-js';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const Main = () => {
   const [state, setState] = useState();
   const [receipts, setReceipts] = useState([]);
   const [favorites, setFavorites] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const user_index = localStorage.getItem('user_index');
