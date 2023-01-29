@@ -8,7 +8,6 @@ import 'react-circular-progressbar/dist/styles.css';
 const Wrapper = styled.div`
   width: 100%;
   height: 260px;
-  border-bottom: 6px solid #eff4f5;
 `;
 
 //인사말과 관련한 컴포넌트 위치 조정해주는 Wrapper
