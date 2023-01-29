@@ -7,12 +7,17 @@ import SummaryInfo from './Component/SummaryInfo';
 import RecentReciept from './Component/RecentReciept';
 import Pusher from 'pusher-js';
 import axios from 'axios';
+<<<<<<< HEAD
+import { useNavigate } from 'react-router-dom';
+=======
 import PopReciept from '../../component/PopReciept/PopReciept';
+>>>>>>> bff62f727f57d6d9754e8793b805a821c6f34258
 
 const Main = () => {
   const [state, setState] = useState(undefined);
   const [receipts, setReceipts] = useState([]);
   const [favorites, setFavorites] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const user_index = localStorage.getItem('user_index');
