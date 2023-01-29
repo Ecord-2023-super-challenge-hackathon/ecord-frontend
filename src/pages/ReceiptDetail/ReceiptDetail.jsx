@@ -160,6 +160,8 @@ const ReceiptDetail = () => {
         },
       )
       .then((r) => console.log(r));
+  };
+
   const navigate = useNavigate();
 
   const navigateToBefore = () => {
