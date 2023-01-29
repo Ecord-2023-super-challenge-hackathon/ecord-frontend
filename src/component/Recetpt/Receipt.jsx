@@ -47,6 +47,11 @@ const Down = styled.div``;
 
 const Receipt = ({ data }) => {
   const { brand_name, receipt_img_url, product_name, ea, date, total_cost } = data;
+  const textOverflow = {
+    overflow: 'hidden',
+    whiteSpace: 'nowrap',
+    textOverflow: 'ellipsis',
+  };
 
   return (
     <ReceiptPaper>
@@ -55,7 +60,9 @@ const Receipt = ({ data }) => {
           <Photo src={`${process.env.REACT_APP_API}${receipt_img_url}`} />
           <SlOptions color={theme.colors.gray} size='11px' />
         </StoreWrapper>
-        <Typography receiptTitle>{brand_name}</Typography>
+        <Typography style={textOverflow} receiptTitle>
+          {brand_name}
+        </Typography>
         <Line />
         <Menus menus={product_name} ea={ea} />
       </Up>

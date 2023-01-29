@@ -9,6 +9,13 @@ const MenuWrapper = styled.div`
 
 const LeftMenu = styled.div`
   width: 67px;
+  height: 100%;
+
+  p {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
 `;
 
 const RightMenu = styled.div`
@@ -27,7 +34,7 @@ const Menus = ({ menus, ea }) => {
   return (
     <>
       {menus.slice(0, 3).map((menuName, i) => (
-        <MenuWrapper>
+        <MenuWrapper key={i}>
           <LeftMenu>
             <Typography SmallText>{menuName}</Typography>
           </LeftMenu>
