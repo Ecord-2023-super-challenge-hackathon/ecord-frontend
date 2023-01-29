@@ -18,12 +18,13 @@ const Photo = styled.img`
   border-radius: 100%;
 `;
 
-const Favorite = ({ data, color }) => {
+const Favorite = ({ data, id }) => {
   const { brand_name, receipt_img_url, product_name } = data;
+  const color = ['#c6ded4', '#dfe4ee', '#dacde4'];
 
   return (
     <Flex flexCenter column>
-      <LogoWrapper color={color}>
+      <LogoWrapper color={color[id]}>
         <Photo src={`${process.env.REACT_APP_API}${receipt_img_url}`} />
       </LogoWrapper>
       <Margin width='95' height='12' />

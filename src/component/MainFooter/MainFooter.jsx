@@ -11,15 +11,14 @@ const Wrapper = styled.div`
 `;
 
 const MainFooter = ({ favorites }) => {
-  console.log(favorites);
   return (
     <Wrapper>
-      <Typography SubTitle>요즘 내가 빠진 음식</Typography>
-      <Margin height='14' />
+      <Typography subTitle>요즘 내가 빠진 음식</Typography>
+      <Margin height='24' />
       <Flex flexCenter justify='space-between'>
-        <Favorite data={favorites[0]} key={0} color='#C6DED4' />
-        <Favorite data={favorites[1]} key={1} color='#dfe4ee' />
-        <Favorite data={favorites[2]} key={2} color='#dacde4' />
+        {favorites.map((favorite, i) => (
+          <Favorite key={i} data={favorite} id={i} />
+        ))}
       </Flex>
     </Wrapper>
   );

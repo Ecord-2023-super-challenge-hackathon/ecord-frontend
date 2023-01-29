@@ -3,12 +3,11 @@ import styled from 'styled-components';
 import Typography from '../../../component/Typography/Typography';
 import { buildStyles, CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
+import Margin from '../../../component/Margin/Margin';
 
 //요약 정보를 담는 전체적인 Wrapper
 const Wrapper = styled.div`
   width: 100%;
-  height: 260px;
-  margin-top: 50px;
 `;
 
 //인사말과 관련한 컴포넌트 위치 조정해주는 Wrapper
@@ -114,6 +113,7 @@ const SummaryInfo = () => {
             </CircleProgressBarWrapper>
           </InfoBox>
         </TypoWrapper>
+        <Margin height='30' />
       </Wrapper>
     </>
   );
