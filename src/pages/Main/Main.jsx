@@ -10,7 +10,7 @@ import axios from 'axios';
 import PopReciept from '../../component/PopReciept/PopReciept';
 
 const Main = () => {
-  const [state, setState] = useState();
+  const [state, setState] = useState(undefined);
   const [receipts, setReceipts] = useState([]);
   const [favorites, setFavorites] = useState([]);
 
@@ -52,7 +52,7 @@ const Main = () => {
 
   return (
     <Layout>
-      <PopReciept />
+      <PopReciept state={state} setState={setState} />
       <SummaryInfo />
       <MainFooter favorites={favorites} />
       <RecentReciept />

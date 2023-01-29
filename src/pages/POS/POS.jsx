@@ -1,4 +1,5 @@
 import React from 'react';
+import styled from 'styled-components';
 import Layout from '../../component/Layout/Layout';
 import axios from 'axios';
 import Lottie from 'react-lottie';
@@ -8,14 +9,17 @@ import Margin from '../../component/Margin/Margin';
 import Button from '../../component/Button/Button';
 import Toast from '../../component/Toast/Toast';
 
+const ButtonWrapper = styled.div`
+  width: 100%;
+  position: fixed;
+  bottom: 30px;
+  ${(props) => props.theme.flex.flexCenterColumn}
+`;
+
 const POS = () => {
   const onClickFunction = () => {
     axios.post('http://43.207.42.44:4000/message', 'sender send');
     console.log('sender success');
-    Toast('결제가 완료되었습니다.');
-  };
-
-  const onCheck = () => {
     Toast('결제가 완료되었습니다.');
   };
 
@@ -46,12 +50,11 @@ const POS = () => {
       <Margin height='70' />
       <Lottie options={defaultOptions} height={300} width={300} isClickToPauseDisabled={true} />
       <Margin height='80' />
-      <Button onClick={onClickFunction} bgColor='#2962f6'>
-        결제하기
-      </Button>
-      <Button onClick={onCheck} bgColor='#2962f6'>
-        결제하기
-      </Button>
+      <ButtonWrapper>
+        <Button onClick={onClickFunction} bgColor='#2962f6'>
+          결제하기
+        </Button>
+      </ButtonWrapper>
     </Layout>
   );
 };
