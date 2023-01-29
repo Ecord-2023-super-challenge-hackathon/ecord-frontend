@@ -2,32 +2,17 @@ import axios from 'axios';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
+import Layout from '../../component/Layout/Layout';
 import Input from './Input';
-
-// 임시 정렬 컴포넌트
-const Flex = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: start;
-  border: 1px solid #05be70;
-  width: 360px;
-  height: 100%;
-`;
-
-const Image = styled.div`
-  margin-top: 160px;
-  margin-bottom: 80px;
-  height: 37px;
-  width: 98px;
-  background-color: #05be70; //
-`;
+import { ReactComponent as Ecord_Title } from '../../assets/svg/Ecord_Title.svg';
+import Button from '../../component/Button/Button';
 
 const Submit = styled.button`
-  background-color: #05be70; //
+  background-color: ${(props) => props.theme.colors.mainGreen}; //
+  color: ${(props) => props.theme.colors.white}; //
+
   border-radius: 5px;
   border: none;
-  color: white; //
   width: 296px;
   height: 44px;
   margin-top: 30px;
@@ -59,16 +44,14 @@ const Login = () => {
   };
 
   return (
-    <div style={{ display: 'flex', justifyContent: 'center', height: '100%' }}>
-      <Flex>
-        <Image>ecord</Image>
-        <Input name='id' value={user.id} onChange={userHandler} />
-        <Input name='password' value={user.password} onChange={userHandler} />
-        <Submit type='button' onClick={login}>
-          로그인
-        </Submit>
-      </Flex>
-    </div>
+    <Layout>
+      <Ecord_Title style={{ marginTop: '160px', marginBottom: '80px' }} />
+      <Input name='id' value={user.id} onChange={userHandler} />
+      <Input name='password' value={user.password} onChange={userHandler} />
+      <Button hover type='button' onClick={login}>
+        로그인
+      </Button>
+    </Layout>
   );
 };
 
