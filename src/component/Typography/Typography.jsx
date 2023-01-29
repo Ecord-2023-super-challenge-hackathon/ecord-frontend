@@ -11,7 +11,14 @@ const Typography = styled.p`
   ${(props) => props.SmallText && props.theme.font.SmallText}
   ${(props) => props.ContentText && props.theme.font.ContentText}
   ${(props) => props.FooterText && props.theme.font.FooterText}
+<<<<<<< HEAD
   ${(props) => props.SmallTitleText && props.theme.font.SmallTitleText}
+=======
+  ${(props) => props.receiptSmall && props.theme.font.receiptSmall}
+  ${(props) => props.receiptTitle && props.theme.font.receiptTitle}
+  ${(props) => props.receiptVerySmall && props.theme.font.receiptVerySmall}
+  ${(props) => props.receiptTotal && props.theme.font.receiptTotal}
+>>>>>>> dee791c8e0fa183b550ce8383c642f9e5cc408c1
 `;
 
 export default Typography;
