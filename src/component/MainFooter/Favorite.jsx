@@ -16,6 +16,8 @@ const Photo = styled.img`
   height: 34px;
   width: 34px;
   border-radius: 100%;
+  object-fit: cover;
+  overflow: hidden;
 `;
 
 const Favorite = ({ data, id }) => {

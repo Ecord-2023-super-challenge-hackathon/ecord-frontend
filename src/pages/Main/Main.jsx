@@ -6,8 +6,8 @@ import Receipts from '../../component/Recetpt/Receipts';
 import SummaryInfo from './Component/SummaryInfo';
 import RecentReciept from './Component/RecentReciept';
 import Pusher from 'pusher-js';
-import Margin from '../../component/Margin/Margin';
 import axios from 'axios';
+import PopReciept from '../../component/PopReciept/PopReciept';
 
 const Main = () => {
   const [state, setState] = useState();
@@ -52,6 +52,7 @@ const Main = () => {
 
   return (
     <Layout>
+      <PopReciept />
       <SummaryInfo />
       <MainFooter favorites={favorites} />
       <RecentReciept />

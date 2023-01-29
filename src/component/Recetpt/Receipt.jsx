@@ -21,6 +21,8 @@ const Photo = styled.img`
   height: 25px;
   width: 25px;
   border-radius: 100%;
+  object-fit: cover;
+  overflow: hidden;
 `;
 
 const Line = styled.div`
