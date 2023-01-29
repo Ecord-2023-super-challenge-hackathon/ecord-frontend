@@ -39,7 +39,7 @@ const Login = () => {
         localStorage.setItem('token', r.data.token);
         localStorage.setItem('user_index', r.data.user_index);
         localStorage.setItem('user_name', r.data.user_name);
-        // navigate('/home');
+        navigate('/main');
       });
   };
 
