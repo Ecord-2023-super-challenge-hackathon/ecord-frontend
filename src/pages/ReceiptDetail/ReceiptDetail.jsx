@@ -12,6 +12,7 @@ import { motion, useDragControls } from 'framer-motion';
 import { saveAs } from 'file-saver';
 import domToImage from 'dom-to-image';
 import Stickers from '../../component/Stickers/Stickers';
+import emptyImg from './EmptyImg.png';
 
 const Sticker = styled(motion.img)`
   cursor: pointer;
@@ -95,7 +96,6 @@ const ReceiptDetail = () => {
 
   useEffect(() => {
     axios.get(`${process.env.REACT_APP_API}/sticker/load`).then((r) => {
-      console.log(r.data);
       setStickerList(r.data);
       setStickerOnList(new Array(r.data.length).fill(false));
     });
@@ -157,12 +157,16 @@ const ReceiptDetail = () => {
           <ReceiptPaper>
             <ImgWrapper>
               <ImgSection>
-                <Img
-                  className='receiptImg'
-                  alt='receiptImg'
-                  style={{ height: '20px' }}
-                  src='http://43.207.42.44:4000/images/99857F4F5E738F472F.png'
-                />
+                {receiptDetail.content_img_url ? (
+                  <Img
+                    className='receiptImg'
+                    alt='receiptImg'
+                    style={{ height: '20px' }}
+                    src={`${process.env.REACT_APP_API}${receiptDetail.content_img_url}`}
+                  />
+                ) : (
+                  <Img style={{ width: '158px' }} className='receiptImg' alt='receiptImg' src={emptyImg} />
+                )}
               </ImgSection>
             </ImgWrapper>
 
