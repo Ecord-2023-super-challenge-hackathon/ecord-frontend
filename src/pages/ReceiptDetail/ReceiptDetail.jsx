@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import Layout from '../../component/Layout/Layout';
 import ReceiptInfo from './Component/ReceiptInfo';
 import Typography from '../../component/Typography/Typography';
 import { FiArrowLeft, FiDownload } from 'react-icons/fi';
@@ -55,6 +54,30 @@ const AlignWrapper = styled.div`
   flex-wrap: wrap;
 `;
 
+const DecoImgWrapper = styled.div`
+  width: 34px;
+  height: 34px;
+  background-image: url('img/DecoButton.png');
+  background-size: cover;
+`;
+
+const DecoButton = styled.button`
+  width: 58px;
+  height: 58px;
+  background-color: #328e8e;
+  border-radius: 100%;
+  border: none;
+  position: absolute;
+  left: 320px;
+  top: 620px;
+  filter: drop-shadow(2px 2px 16px rgba(0, 0, 0, 0.11));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 3px;
+  padding-left: 2px;
+`;
+
 const Img = styled.img``;
 
 const ReceiptDetail = (props) => {
@@ -88,6 +111,8 @@ const ReceiptDetail = (props) => {
   // 얼마 지불했는지
   const [payPrice, setPayPrice] = useState('28,000');
 
+  const [payDay, setPayDay] = useState('2023-04-31 09:13:43');
+
   return (
     <>
       <AllWrapper>
@@ -106,9 +131,18 @@ const ReceiptDetail = (props) => {
           <AlignWrapper>
             <ReceiptInfo address={address} storeName={storeName} MenuList={MenuList} />
             <VatInfo taxablePrice={taxablePrice} vat={vat} totalVat={totalVat} />
-            <CardInfo cardName={cardName} cardNumber={cardNumber} payMent={payMent} payPrice={payPrice} />
+            <CardInfo
+              cardName={cardName}
+              cardNumber={cardNumber}
+              payMent={payMent}
+              payPrice={payPrice}
+              payDay={payDay}
+            />
           </AlignWrapper>
         </ReceiptPaper>
+        <DecoButton>
+          <DecoImgWrapper />
+        </DecoButton>
       </AllWrapper>
     </>
   );
