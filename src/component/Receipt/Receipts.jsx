@@ -1,3 +1,4 @@
+import { Navigate, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import Receipt from './Receipt';
 
@@ -11,12 +12,22 @@ const ReceiptContainer = styled.div`
   padding: 20px;
 `;
 
-const Receipts = ({ receipts }) => (
-  <ReceiptContainer>
-    {receipts.map((data) => {
-      return <Receipt data={data} key={data.receipt_index} />;
-    })}
-  </ReceiptContainer>
-);
+const Receipts = ({ receipts }) => {
+  const navigate = useNavigate();
+
+  const moveToReceipt = (e) => {
+    const { id } = e.currentTarget;
+
+    navigate(`/receipt/${id}`);
+  };
+
+  return (
+    <ReceiptContainer>
+      {receipts.map((data) => (
+        <Receipt onClick={moveToReceipt} id={data.receipt_index} data={data} key={data.receipt_index} />
+      ))}
+    </ReceiptContainer>
+  );
+};
 
 export default Receipts;

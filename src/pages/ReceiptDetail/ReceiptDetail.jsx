@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import Layout from '../../component/Layout/Layout';
 import ReceiptInfo from './Component/ReceiptInfo';
@@ -6,10 +6,29 @@ import Typography from '../../component/Typography/Typography';
 import { FiArrowLeft, FiDownload } from 'react-icons/fi';
 import VatInfo from './Component/VatInfo';
 import CardInfo from './Component/CardInfo';
+import { useParams } from 'react-router-dom';
+import axios from 'axios';
+import { motion, useDragControls } from 'framer-motion';
+import { saveAs } from 'file-saver';
+import domToImage from 'dom-to-image';
+import Stickers from '../../component/Stickers/Stickers';
+import emptyImg from './EmptyImg.png';
+import temp from './monitor-g0dc03eb6e_640.jpg';
+import { useNavigate } from 'react-router-dom';
+import Deco from './DecoButton.png';
+
+const Sticker = styled(motion.img)`
+  cursor: pointer;
+  width: 66px;
+  height: 66px;
+  object-fit: cover;
+  margin: 15px 13px;
+  position: absolute;
+  z-index: 10;
+`;
+
 const AllWrapper = styled.div`
   width: 100%;
-  height: auto;
-  background-color: #f1f1f1;
   display: flex;
   justify-content: center;
   vertical-align: top;
@@ -33,6 +52,7 @@ const ReceiptPaper = styled.div`
 `;
 
 const ImgSection = styled.div`
+  cursor: pointer;
   width: 236px;
   height: 124px;
   margin-top: 24px;
@@ -55,62 +75,171 @@ const AlignWrapper = styled.div`
   flex-wrap: wrap;
 `;
 
+const DecoButton = styled.button`
+  width: 58px;
+  height: 58px;
+  background-color: #328e8e;
+  border-radius: 100%;
+  position: absolute;
+  left: 255px;
+  top: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+`;
+
+const ButtonImg = styled.img`
+  width: 34px;
+  height: 34px;
+  margin-top: 3px;
+  margin-left: 3px;
+`;
+
 const Img = styled.img``;
 
-const ReceiptDetail = (props) => {
-  //이미지 URL 변수 -> 아직 기능 구현 안됨.
-  const [imgURL, setImgURL] = useState('img/EmptyImg.png');
+const ReceiptDetail = () => {
+  // 여기서부터 스티커
 
-  const [address, setAddress] = useState('인천광역시 미추홀구 인하로 53');
-  const [storeName, setStoreName] = useState('카페삼층 인하대점');
+  const [stickerList, setStickerList] = useState([]);
+  const [stickerOnList, setStickerOnList] = useState([]);
+  const [onSticker, setOnSticker] = useState(false);
+  const controls = useDragControls();
+  const cardRef = useRef();
 
-  //구매한 물품, 가격 등등을 나타내는 배열
-  const MenuList = [
-    { menuName: 'T)제주유기농말차', menuEachPrice: '6300', menuCount: '2', menuTotalPrice: '6300' },
-    { menuName: 'S)에스프레소', menuEachPrice: '6300', menuCount: '1', menuTotalPrice: '6300' },
-    { menuName: 'S)자몽홍차레몬티', menuEachPrice: '4300', menuCount: '2', menuTotalPrice: '8600' },
-    { menuName: '딸기생크림케이크', menuEachPrice: '6300', menuCount: '1', menuTotalPrice: '6300' },
-  ];
+  const onDownloadBtn = () => {
+    const card = cardRef.current;
+    const filter = (card) => {
+      return card.tagName !== 'BUTTON';
+    };
+    domToImage.toBlob(card, { filter: filter }).then((blob) => {
+      saveAs(blob, '영수증.png');
+    });
+  };
 
-  //과세물품가액
-  const [taxablePrice, settaxablePrice] = useState('27,872');
-  //부가세
-  const [vat, setVat] = useState('228');
-  //합계
-  const [totalVat, setTotalVat] = useState('28,100');
+  useEffect(() => {
+    axios.get(`${process.env.REACT_APP_API}/sticker/load`).then((r) => {
+      setStickerList(r.data);
+      setStickerOnList(new Array(r.data.length).fill(false));
+    });
+  }, []);
 
-  //결제 카드 정보
-  const [cardName, setCardName] = useState('0014 현대');
-  //카드 비번
-  const [cardNumber, setCardNumber] = useState('29481293**434**/00312343');
-  // 지불 방법
-  const [payMent, setPayMent] = useState('일시불');
-  // 얼마 지불했는지
-  const [payPrice, setPayPrice] = useState('28,000');
+  // 여기까지 스티커
+  const { receiptIndex } = useParams();
+  const [receiptDetail, setReceiptDetail] = useState([]);
+
+  useEffect(() => {
+    const user_index = localStorage.getItem('user_index');
+    axios
+      .get(`${process.env.REACT_APP_API}/users/${user_index}/receipts/${receiptIndex}`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+      })
+      .then((r) => {
+        console.log(r.data);
+        setReceiptDetail(r.data);
+      });
+  }, []);
+
+  const postImage = () => {
+    const user_index = localStorage.getItem('user_index');
+
+    axios
+      .post(
+        `${process.env.REACT_APP_API}/users/${user_index}/receipts/${receiptIndex}/image`,
+        {
+          body: temp,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('token')}`,
+          },
+        },
+      )
+      .then((r) => console.log(r));
+  };
+
+  const navigate = useNavigate();
+
+  const navigateToBefore = () => {
+    navigate('/main');
+  };
 
   return (
-    <>
-      <AllWrapper>
-        <TitleWrapper>
-          <FiArrowLeft size={22} />
-          <Typography SmallTitleText>영수증 상세보기</Typography>
-          <FiDownload size={20} />
-        </TitleWrapper>
-        <ReceiptPaper>
-          <ImgWrapper>
-            <ImgSection>
-              <Img className='receiptImg' alt='receiptImg' src={imgURL} />
-            </ImgSection>
-          </ImgWrapper>
+    <Layout gray>
+      <TitleWrapper>
+        <FiArrowLeft style={{ cursor: 'pointer' }} size={22} onClick={navigateToBefore} />
+        <Typography SmallTitleText>영수증 상세보기</Typography>
+        <FiDownload style={{ cursor: 'pointer' }} size={20} className='downBtn' onClick={onDownloadBtn} />
+      </TitleWrapper>
+      <div className='card' ref={cardRef} style={{ position: 'relative' }}>
+        <Stickers
+          onSticker={onSticker}
+          setOnSticker={setOnSticker}
+          stickerList={stickerList}
+          setStickerOnList={setStickerOnList}
+          stickerOnList={stickerOnList}
+        />
 
-          <AlignWrapper>
-            <ReceiptInfo address={address} storeName={storeName} MenuList={MenuList} />
-            <VatInfo taxablePrice={taxablePrice} vat={vat} totalVat={totalVat} />
-            <CardInfo cardName={cardName} cardNumber={cardNumber} payMent={payMent} payPrice={payPrice} />
-          </AlignWrapper>
-        </ReceiptPaper>
-      </AllWrapper>
-    </>
+        {stickerOnList.map(
+          (a, i) =>
+            a && (
+              <Sticker
+                dragMomentum={false}
+                dragElastic={0.1}
+                whileDrag={{ scale: 1.2 }}
+                drag
+                dragControls={controls}
+                whileTap={{ cursor: 'grabbing' }}
+                key={i}
+                src={`${process.env.REACT_APP_API}${stickerList[i].sticker_url}`}
+              />
+            ),
+        )}
+        <AllWrapper>
+          <ReceiptPaper>
+            <ImgWrapper>
+              <ImgSection onClick={postImage}>
+                {receiptDetail.content_img_url ? (
+                  <Img
+                    className='receiptImg'
+                    alt='receiptImg'
+                    style={{ height: '20px' }}
+                    src={`${process.env.REACT_APP_API}${receiptDetail.content_img_url}`}
+                  />
+                ) : (
+                  <Img style={{ width: '158px' }} className='receiptImg' alt='receiptImg' src={emptyImg} />
+                )}
+              </ImgSection>
+            </ImgWrapper>
+
+            <AlignWrapper>
+              <ReceiptInfo
+                address={receiptDetail.address}
+                storeName={receiptDetail.brand_name}
+                MenuList={receiptDetail.product_name}
+                costList={receiptDetail.cost}
+              />
+              <VatInfo
+                taxablePrice={receiptDetail.serial_number}
+                vat={receiptDetail.receipt_index}
+                totalVat={receiptDetail.total_cost}
+              />
+              <CardInfo
+                cardName={receiptDetail.card_company}
+                cardNumber={receiptDetail.card_number}
+                payMent='일시불'
+                payPrice={receiptDetail.total_cost}
+              />
+            </AlignWrapper>
+          </ReceiptPaper>
+          <DecoButton type='button' onClick={() => setOnSticker(!onSticker)}>
+            <ButtonImg src={Deco} />
+          </DecoButton>
+        </AllWrapper>
+      </div>
+    </Layout>
   );
 };
 

@@ -19,7 +19,7 @@ const InputBox = styled.input`
   padding-left: 12px;
 `;
 
-const Input = ({ name, onChange, value }) => {
+const Input = ({ type, name, onChange, value }) => {
   return (
     <InputWrapper>
       {name === 'id' && (
@@ -31,7 +31,7 @@ const Input = ({ name, onChange, value }) => {
       {name === 'password' && (
         <>
           <MdLock color='#B2B5BE' />
-          <InputBox name={name} onChange={onChange} value={value} placeholder='비밀번호 입력' />
+          <InputBox type={type} name={name} onChange={onChange} value={value} placeholder='비밀번호 입력' />
         </>
       )}
     </InputWrapper>
