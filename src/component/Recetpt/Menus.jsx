@@ -32,7 +32,7 @@ const Menus = ({ menus, ea }) => {
             <Typography SmallText>{menuName}</Typography>
           </LeftMenu>
           <RightMenu>
-            <Typography SmallText>…… X{ea[i]}</Typography>
+            <Typography SmallText>…… &nbsp; X{ea[i]}</Typography>
           </RightMenu>
         </MenuWrapper>
       ))}
