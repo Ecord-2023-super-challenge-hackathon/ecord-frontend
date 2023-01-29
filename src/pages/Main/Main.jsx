@@ -5,8 +5,8 @@ import MainFooter from '../../component/MainFooter/MainFooter';
 import Receipts from '../../component/Recetpt/Receipts';
 import SummaryInfo from './Component/SummaryInfo';
 import RecentReciept from './Component/RecentReciept';
-import Margin from '../../component/Margin/Margin';
 import Pusher from 'pusher-js';
+import Margin from '../../component/Margin/Margin';
 import axios from 'axios';
 
 const Main = () => {
@@ -24,7 +24,6 @@ const Main = () => {
         },
       })
       .then((r) => {
-        console.log(r.data);
         setReceipts(r.data);
       });
 
@@ -35,10 +34,11 @@ const Main = () => {
         },
       })
       .then((r) => {
-        console.log(r.data);
         setFavorites(r.data);
       });
+  }, []);
 
+  useEffect(() => {
     const pusher = new Pusher('355b90c48a1eaff96f03', {
       cluster: 'ap3',
       encrypted: true,
@@ -48,7 +48,7 @@ const Main = () => {
       setState(data);
     });
     console.log(state);
-  }, []);
+  }, [state]);
 
   return (
     <Layout>
