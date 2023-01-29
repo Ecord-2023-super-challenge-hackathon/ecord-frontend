@@ -1,7 +1,7 @@
 import React from 'react';
 import Layout from '../../component/Layout/Layout';
 import Button from '../../component/Button/Button';
-import Footer_Navigate from '../../assets/theme/Footer_Navigate';
+import FooterNavigate from '../../component/FooterNavigate';
 import { ReactComponent as Ecord_Title } from '../../assets/svg/Ecord_Title.svg';
 import { ReactComponent as Ecord } from '../../assets/svg/Ecord.svg';
 import { ReactComponent as Intro_Image } from '../../assets/svg/Intro_Image.svg';
@@ -14,7 +14,7 @@ const Main = () => {
       <Intro_Image />
       <Button hover>시작하기</Button>
       <div>Main dd</div>
-      <Footer_Navigate />
+      <FooterNavigate />
     </Layout>
   );
 };

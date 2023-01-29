@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { MdHomeFilled } from 'react-icons/md';
 import { RiCalendar2Line } from 'react-icons/ri';
 import { HiOutlineUser } from 'react-icons/hi';
-import Typography from '../../component/Typography/Typography';
+import Typography from './Typography/Typography';
 
 const Container = styled.div`
   position: fixed;
@@ -20,19 +20,19 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: space-around;
   padding-top: 10px;
-  #Icon_CSS_Home {
+  #IconCssHome {
     width: 26px;
     height: 26px;
     cursor: pointer;
     margin-bottom: 4px;
   }
-  #Icon_CSS_Cal {
+  #IconCssCal {
     width: 26px;
     height: 26px;
     cursor: pointer;
     margin-bottom: 4px;
   }
-  #Icon_CSS_My {
+  #IconCssMy {
     width: 26px;
     height: 26px;
     cursor: pointer;
@@ -52,7 +52,7 @@ const EachWrapper = styled.div`
 `;
 
 //클릭시 페이지 이동할 네이게이트 함수
-const Footer_Navigate = () => {
+const FooterNavigate = () => {
   const navigate = useNavigate();
 
   const navigateTofile = () => {
@@ -60,53 +60,53 @@ const Footer_Navigate = () => {
   };
 
   //클릭시 색을 바꿀때 이를 담당하는 색깔 변수들
-  const [home_Color, setHome_Color] = React.useState('#1D1E1F');
-  const [cal_Color, setCal_Color] = React.useState('#1D1E1F');
-  const [my_Color, setMy_Color] = React.useState('#1D1E1F');
+  const [homeColor, setHomeColor] = React.useState('#05be70');
+  const [calColor, setCalColor] = React.useState('#1D1E1F');
+  const [myColor, setMyColor] = React.useState('#1D1E1F');
 
   return (
     <>
       <Container>
         <Wrapper>
           <EachWrapper
-            style={{ color: home_Color }}
+            style={{ color: homeColor }}
             onClick={() => {
-              setHome_Color('#05be70');
-              setCal_Color('#1D1E1F');
-              setMy_Color('#1D1E1F');
+              setHomeColor('#05be70');
+              setCalColor('#1D1E1F');
+              setMyColor('#1D1E1F');
               navigate('/main');
             }}
           >
-            <MdHomeFilled id='Icon_CSS_Home' />
-            <Typography fontSize='10px' color={my_Color}>
+            <MdHomeFilled id='IconCssHome' />
+            <Typography fontSize='10px' color={myColor}>
               홈
             </Typography>
           </EachWrapper>
           <EachWrapper
-            style={{ color: cal_Color }}
+            style={{ color: calColor }}
             onClick={() => {
-              setHome_Color('#1D1E1F');
-              setCal_Color('#05be70');
-              setMy_Color('#1D1E1F');
+              setHomeColor('#1D1E1F');
+              setCalColor('#05be70');
+              setMyColor('#1D1E1F');
               navigate('/main');
             }}
           >
-            <RiCalendar2Line id='Icon_CSS_Cal' />
-            <Typography fontSize='10px' color={my_Color}>
+            <RiCalendar2Line id='IconCssCal' />
+            <Typography fontSize='10px' color={myColor}>
               캘린더
             </Typography>
           </EachWrapper>
           <EachWrapper
-            style={{ color: my_Color }}
+            style={{ color: myColor }}
             onClick={() => {
-              setHome_Color('#1D1E1F');
-              setCal_Color('#1D1E1F');
-              setMy_Color('#05be70');
+              setHomeColor('#1D1E1F');
+              setCalColor('#1D1E1F');
+              setMyColor('#05be70');
               navigate('/main');
             }}
           >
-            <HiOutlineUser id='Icon_CSS_My' />
-            <Typography fontSize='10px' color={my_Color}>
+            <HiOutlineUser id='IconCssMy' />
+            <Typography fontSize='10px' color={myColor}>
               마이
             </Typography>
           </EachWrapper>
@@ -116,4 +116,4 @@ const Footer_Navigate = () => {
   );
 };
 
-export default Footer_Navigate;
+export default FooterNavigate;
