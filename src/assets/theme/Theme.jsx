@@ -37,7 +37,7 @@ const font = {
   SmallText: `
       font-weight: 400;
       font-size: 12px;
-      line-height: 22px;
+      line-height: 17px;
     `,
   ContentText: `
       font-weight: 500;
