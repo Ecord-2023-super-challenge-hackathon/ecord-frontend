@@ -29,8 +29,6 @@ const Sticker = styled(motion.img)`
 
 const AllWrapper = styled.div`
   width: 100%;
-  height: auto;
-  background-color: #f1f1f1;
   display: flex;
   justify-content: center;
   vertical-align: top;
@@ -83,8 +81,8 @@ const DecoButton = styled.button`
   background-color: #328e8e;
   border-radius: 100%;
   position: absolute;
-  left: 300px;
-  top: 630px;
+  left: 255px;
+  top: 500px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -115,7 +113,7 @@ const ReceiptDetail = () => {
       return card.tagName !== 'BUTTON';
     };
     domToImage.toBlob(card, { filter: filter }).then((blob) => {
-      saveAs(blob, 'card.png');
+      saveAs(blob, '영수증.png');
     });
   };
 
@@ -169,7 +167,12 @@ const ReceiptDetail = () => {
   };
 
   return (
-    <Layout>
+    <Layout gray>
+      <TitleWrapper>
+        <FiArrowLeft style={{ cursor: 'pointer' }} size={22} onClick={navigateToBefore} />
+        <Typography SmallTitleText>영수증 상세보기</Typography>
+        <FiDownload style={{ cursor: 'pointer' }} size={20} className='downBtn' onClick={onDownloadBtn} />
+      </TitleWrapper>
       <div className='card' ref={cardRef} style={{ position: 'relative' }}>
         <Stickers
           onSticker={onSticker}
@@ -194,13 +197,7 @@ const ReceiptDetail = () => {
               />
             ),
         )}
-
         <AllWrapper>
-          <TitleWrapper>
-            <FiArrowLeft style={{ cursor: 'pointer' }} size={22} onClick={navigateToBefore} />
-            <Typography SmallTitleText>영수증 상세보기</Typography>
-            <FiDownload style={{ cursor: 'pointer' }} size={20} className='downBtn' onClick={onDownloadBtn} />
-          </TitleWrapper>
           <ReceiptPaper>
             <ImgWrapper>
               <ImgSection onClick={postImage}>

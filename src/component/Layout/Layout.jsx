@@ -10,19 +10,24 @@ const Background = styled.div`
 
 const Width = styled.div`
   height: 834px;
+  width: 100%;
   margin: 0 auto;
-  width: 360px;
   overflow: scroll;
   display: flex;
   flex-direction: column;
   margin-bottom: 78px;
   align-items: center;
   background-color: ${(props) => props.theme.colors.backgroundWhite};
+  background-color: ${(props) => props.gray && '#f1f1f1'};
+
+  @media (min-width: 400px) {
+    width: 360px;
+  }
 `;
 
-const Layout = ({ children }) => (
+const Layout = ({ children, gray }) => (
   <Background>
-    <Width>{children}</Width>
+    <Width gray={gray}>{children}</Width>
   </Background>
 );
 

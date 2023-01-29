@@ -37,7 +37,7 @@ const CardInfo = (props) => {
         <EachWrapper>
           <Typography SmallText2>카드결제(IC)</Typography>
           <Typography SmallText2>
-            {props.payMent},{props.payPrice}
+            {props.payMent} / {props.payPrice}
           </Typography>
         </EachWrapper>
 
