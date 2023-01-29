@@ -19,6 +19,13 @@ const EachWrapper = styled.div`
   justify-content: space-between;
 `;
 
+const DayWrapper = styled.div`
+  width: 100%;
+  height: auto;
+  text-align: right;
+  margin-right: 24px;
+`;
+
 const CardInfo = (props) => {
   return (
     <>
@@ -33,6 +40,12 @@ const CardInfo = (props) => {
             {props.payMent},{props.payPrice}
           </Typography>
         </EachWrapper>
+
+        <DayWrapper style={{ marginTop: '25px', textAlign: 'right' }}>
+          <Typography SmallText2 color='PayDayColor'>
+            {props.payDay}
+          </Typography>
+        </DayWrapper>
       </Wrapper>
     </>
   );
