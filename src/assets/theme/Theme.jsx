@@ -8,11 +8,14 @@ const colors = {
   backgroundWhite: '#ffffff',
   mainGreen: '#05BE70',
   lightGreen: '#7ddab3',
+  receiptGray: '#AAB0B6',
+  receiptLine: '#D6DCE2',
 };
 
 const shadow = {
-  componentShadow: `
-    `,
+  receiptShadow: `
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
+  `,
 };
 
 const font = {
@@ -48,6 +51,31 @@ const font = {
       font-weight: 400;
       font-size: 10px;
     `,
+  receiptTitle: `
+    font-weight: 700;
+    font-size: 13px;
+    line-height: 16px;  
+  `,
+
+  receiptTotal: `
+    font-weight: 600;
+    font-size: 11px;
+    line-height: 16px;
+  `,
+
+  receiptSmall: `
+    font-weight: 600;
+    font-size: 10px;
+    line-height: 16px;
+    color: ${colors.receiptGray};
+  `,
+
+  receiptVerySmall: `
+    font-weight: 400;
+    font-size: 8px;
+    line-height: 16px;
+    color: ${colors.receiptGray};
+  `,
 };
 
 const flex = {
