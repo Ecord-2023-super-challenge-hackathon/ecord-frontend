@@ -5,6 +5,7 @@ import Typography from '../../component/Typography/Typography';
 import { FiArrowLeft, FiDownload } from 'react-icons/fi';
 import VatInfo from './Component/VatInfo';
 import CardInfo from './Component/CardInfo';
+
 const AllWrapper = styled.div`
   width: 100%;
   height: auto;
@@ -67,7 +68,7 @@ const DecoButton = styled.button`
   background-color: #328e8e;
   border-radius: 100%;
   border: none;
-  position: absolute;
+  position: fixed;
   left: 320px;
   top: 620px;
   filter: drop-shadow(2px 2px 16px rgba(0, 0, 0, 0.11));
@@ -80,9 +81,11 @@ const DecoButton = styled.button`
 
 const Img = styled.img``;
 
-const ReceiptDetail = (props) => {
+const ReceiptDetail = ({ data }) => {
+  console.log(data);
+
   //이미지 URL 변수 -> 아직 기능 구현 안됨.
-  const [imgURL, setImgURL] = useState('img/EmptyImg.png');
+  const [imgURL, setImgURL] = useState('img/DecoButton.png');
 
   const [address, setAddress] = useState('인천광역시 미추홀구 인하로 53');
   const [storeName, setStoreName] = useState('카페삼층 인하대점');
@@ -113,9 +116,10 @@ const ReceiptDetail = (props) => {
 
   const [payDay, setPayDay] = useState('2023-04-31 09:13:43');
 
+  const { brand_name, receipt_img_url, product_name, ea, date, total_cost } = data;
   return (
     <>
-      <AllWrapper>
+      {/* <AllWrapper>
         <TitleWrapper>
           <FiArrowLeft size={22} />
           <Typography SmallTitleText>영수증 상세보기</Typography>
@@ -124,7 +128,11 @@ const ReceiptDetail = (props) => {
         <ReceiptPaper>
           <ImgWrapper>
             <ImgSection>
-              <Img className='receiptImg' alt='receiptImg' src={imgURL} />
+              {receipt_img_url ? (
+                <Img className='receiptImg' alt='receiptImg' src={`${process.env.REACT_APP_API}${receipt_img_url}`} />
+              ) : (
+                <Img className='receiptImg' alt='receiptImg' src={'img/EmptyImg.png'} />
+              )}
             </ImgSection>
           </ImgWrapper>
 
@@ -143,7 +151,7 @@ const ReceiptDetail = (props) => {
         <DecoButton>
           <DecoImgWrapper />
         </DecoButton>
-      </AllWrapper>
+      </AllWrapper> */}
     </>
   );
 };
