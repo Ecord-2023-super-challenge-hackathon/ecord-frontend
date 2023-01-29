@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import Layout from '../../component/Layout/Layout';
 import FooterNavigate from '../../component/FooterNavigate';
+import Receipts from '../../component/Recetpt/Receipts';
+import axios from 'axios';
 
 const Main = () => {
   const [receipts, setReceipts] = useState([]);
