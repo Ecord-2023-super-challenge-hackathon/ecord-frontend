@@ -43,6 +43,10 @@ const font = {
       font-size: 12px;
       line-height: 17px;
     `,
+  SmallText2: `
+    font-weight: 400;
+    font-size: 12px;
+  `,
   ContentText: `
       font-weight: 500;
       font-size: 14px;
@@ -55,6 +59,14 @@ const font = {
   SmallTitleText: `
     font-weight: 700;
     font-size: 16px;
+  `,
+  TooSmallText: `
+    font-weight: 400;
+    font-size: 9px;
+  `,
+  BoldText: `
+  font-weight: 700;
+  font-size: 12px;
   `,
 };
 
