@@ -11,6 +11,15 @@ const GlobalStyle = createGlobalStyle`
       ${(props) => props.theme.flex.flexCenter}
   }
 
+  body{
+    -ms-overflow-style: none;
+  }
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+
+
   @font-face {
     font-family: 'Pretendard';
     src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1Pretendard-Bold.woff') format('woff');
