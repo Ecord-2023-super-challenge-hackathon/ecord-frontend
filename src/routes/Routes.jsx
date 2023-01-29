@@ -12,7 +12,7 @@ const Router = () => (
     {/* <NotMobile /> */}
     <Routes>
       <Route exact path='/main' element={<Main />} />
-      <Route exact path='/intro' element={<Intro />} />
+      <Route exact path='/' element={<Intro />} />
       <Route exact path='/login' element={<Login />} />
       <Route exact path='/receiptDetail' element={<ReceiptDetail />} />
       <Route exact path='/pos' element={<POS />} />
