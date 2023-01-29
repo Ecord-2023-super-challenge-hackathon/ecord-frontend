@@ -10,6 +10,7 @@ const colors = {
   lightGreen: '#7ddab3',
   receiptGray: '#AAB0B6',
   receiptLine: '#D6DCE2',
+  darkGreen: '#1E8D73',
 };
 
 const shadow = {
@@ -40,7 +41,7 @@ const font = {
   SmallText: `
       font-weight: 400;
       font-size: 12px;
-      line-height: 22px;
+      line-height: 17px;
     `,
   ContentText: `
       font-weight: 500;
