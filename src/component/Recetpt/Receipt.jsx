@@ -14,7 +14,6 @@ const ReceiptPaper = styled.div`
   flex-direction: column;
   justify-content: space-between;
   cursor: pointer;
-
   ${(props) => props.theme.shadow.receiptShadow}
 `;
 
