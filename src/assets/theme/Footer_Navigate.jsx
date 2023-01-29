@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { MdHomeFilled } from 'react-icons/md';
 import { RiCalendar2Line } from 'react-icons/ri';
 import { HiOutlineUser } from 'react-icons/hi';
+import Typography from '../../component/Typography/Typography';
 
 const Container = styled.div`
   position: fixed;
@@ -73,10 +74,13 @@ const Footer_Navigate = () => {
               setHome_Color('#05be70');
               setCal_Color('#1D1E1F');
               setMy_Color('#1D1E1F');
+              navigate('/main');
             }}
           >
             <MdHomeFilled id='Icon_CSS_Home' />
-            <p>홈</p>
+            <Typography fontSize='10px' color={my_Color}>
+              홈
+            </Typography>
           </EachWrapper>
           <EachWrapper
             style={{ color: cal_Color }}
@@ -84,10 +88,13 @@ const Footer_Navigate = () => {
               setHome_Color('#1D1E1F');
               setCal_Color('#05be70');
               setMy_Color('#1D1E1F');
+              navigate('/main');
             }}
           >
             <RiCalendar2Line id='Icon_CSS_Cal' />
-            <p>캘린더</p>
+            <Typography fontSize='10px' color={my_Color}>
+              캘린더
+            </Typography>
           </EachWrapper>
           <EachWrapper
             style={{ color: my_Color }}
@@ -95,10 +102,13 @@ const Footer_Navigate = () => {
               setHome_Color('#1D1E1F');
               setCal_Color('#1D1E1F');
               setMy_Color('#05be70');
+              navigate('/main');
             }}
           >
             <HiOutlineUser id='Icon_CSS_My' />
-            <p>마이</p>
+            <Typography fontSize='10px' color={my_Color}>
+              마이
+            </Typography>
           </EachWrapper>
         </Wrapper>
       </Container>
