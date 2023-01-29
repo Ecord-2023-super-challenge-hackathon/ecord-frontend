@@ -1,19 +1,19 @@
 import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
+import Layout from '../../component/Layout/Layout';
 import ReceiptInfo from './Component/ReceiptInfo';
 import Typography from '../../component/Typography/Typography';
 import { FiArrowLeft, FiDownload } from 'react-icons/fi';
 import VatInfo from './Component/VatInfo';
 import CardInfo from './Component/CardInfo';
-<<<<<<< HEAD
-=======
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { motion, useDragControls } from 'framer-motion';
 import { saveAs } from 'file-saver';
 import domToImage from 'dom-to-image';
 import Stickers from '../../component/Stickers/Stickers';
-
+import { useNavigate } from 'react-router-dom';
+import Deco from './DecoButton.png';
 const Sticker = styled(motion.img)`
   cursor: pointer;
   width: 66px;
@@ -23,7 +23,6 @@ const Sticker = styled(motion.img)`
   position: absolute;
   z-index: 10;
 `;
->>>>>>> 77c00f4e39072131d22e7adee21a1893f8760935
 
 const AllWrapper = styled.div`
   width: 100%;
@@ -74,42 +73,31 @@ const AlignWrapper = styled.div`
   flex-wrap: wrap;
 `;
 
-const DecoImgWrapper = styled.div`
-  width: 34px;
-  height: 34px;
-  background-image: url('img/DecoButton.png');
-  background-size: cover;
-`;
-
 const DecoButton = styled.button`
   width: 58px;
   height: 58px;
   background-color: #328e8e;
   border-radius: 100%;
-  border: none;
-  position: fixed;
-  left: 320px;
-  top: 620px;
-  filter: drop-shadow(2px 2px 16px rgba(0, 0, 0, 0.11));
+  position: absolute;
+  left: 300px;
+  top: 630px;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-top: 3px;
-  padding-left: 2px;
+  border: none;
+`;
+
+const ButtonImg = styled.img`
+  width: 34px;
+  height: 34px;
+  margin-top: 3px;
+  margin-left: 3px;
 `;
 
 const Img = styled.img``;
 
-<<<<<<< HEAD
-const ReceiptDetail = ({ data }) => {
-  console.log(data);
-
-  //이미지 URL 변수 -> 아직 기능 구현 안됨.
-  const [imgURL, setImgURL] = useState('img/DecoButton.png');
-=======
 const ReceiptDetail = () => {
   // 여기서부터 스티커
->>>>>>> 77c00f4e39072131d22e7adee21a1893f8760935
 
   const [stickerList, setStickerList] = useState([]);
   const [stickerOnList, setStickerOnList] = useState([]);
@@ -153,47 +141,13 @@ const ReceiptDetail = () => {
       });
   }, []);
 
-  const [payDay, setPayDay] = useState('2023-04-31 09:13:43');
+  const navigate = useNavigate();
 
-  const { brand_name, receipt_img_url, product_name, ea, date, total_cost } = data;
+  const navigateToBefore = () => {
+    navigate('/main');
+  };
+
   return (
-<<<<<<< HEAD
-    <>
-      {/* <AllWrapper>
-        <TitleWrapper>
-          <FiArrowLeft size={22} />
-          <Typography SmallTitleText>영수증 상세보기</Typography>
-          <FiDownload size={20} />
-        </TitleWrapper>
-        <ReceiptPaper>
-          <ImgWrapper>
-            <ImgSection>
-              {receipt_img_url ? (
-                <Img className='receiptImg' alt='receiptImg' src={`${process.env.REACT_APP_API}${receipt_img_url}`} />
-              ) : (
-                <Img className='receiptImg' alt='receiptImg' src={'img/EmptyImg.png'} />
-              )}
-            </ImgSection>
-          </ImgWrapper>
-
-          <AlignWrapper>
-            <ReceiptInfo address={address} storeName={storeName} MenuList={MenuList} />
-            <VatInfo taxablePrice={taxablePrice} vat={vat} totalVat={totalVat} />
-            <CardInfo
-              cardName={cardName}
-              cardNumber={cardNumber}
-              payMent={payMent}
-              payPrice={payPrice}
-              payDay={payDay}
-            />
-          </AlignWrapper>
-        </ReceiptPaper>
-        <DecoButton>
-          <DecoImgWrapper />
-        </DecoButton>
-      </AllWrapper> */}
-    </>
-=======
     <Layout>
       <div className='card' ref={cardRef} style={{ position: 'relative' }}>
         <Stickers
@@ -203,9 +157,7 @@ const ReceiptDetail = () => {
           setStickerOnList={setStickerOnList}
           stickerOnList={stickerOnList}
         />
-        <button type='button' onClick={() => setOnSticker(!onSticker)}>
-          스티커 키자
-        </button>
+
         {stickerOnList.map(
           (a, i) =>
             a && (
@@ -223,7 +175,7 @@ const ReceiptDetail = () => {
         )}
 
         <AllWrapper>
-          <TitleWrapper>
+          <TitleWrapper onClick={navigateToBefore}>
             <FiArrowLeft size={22} />
             <Typography SmallTitleText>영수증 상세보기</Typography>
             <FiDownload size={20} className='downBtn' onClick={onDownloadBtn} />
@@ -260,10 +212,12 @@ const ReceiptDetail = () => {
               />
             </AlignWrapper>
           </ReceiptPaper>
+          <DecoButton type='button' onClick={() => setOnSticker(!onSticker)}>
+            <ButtonImg src={Deco} />
+          </DecoButton>
         </AllWrapper>
       </div>
     </Layout>
->>>>>>> 77c00f4e39072131d22e7adee21a1893f8760935
   );
 };
 
