@@ -6,11 +6,17 @@ import LottieData from '../../assets/lottie/POS.json';
 import Typography from '../../component/Typography/Typography';
 import Margin from '../../component/Margin/Margin';
 import Button from '../../component/Button/Button';
+import Toast from '../../component/Toast/Toast';
 
 const POS = () => {
   const onClickFunction = () => {
     axios.post('http://43.207.42.44:4000/message', 'sender send');
     console.log('sender success');
+    Toast('결제가 완료되었습니다.');
+  };
+
+  const onCheck = () => {
+    Toast('결제가 완료되었습니다.');
   };
 
   const defaultOptions = {
@@ -41,6 +47,9 @@ const POS = () => {
       <Lottie options={defaultOptions} height={300} width={300} isClickToPauseDisabled={true} />
       <Margin height='80' />
       <Button onClick={onClickFunction} bgColor='#2962f6'>
+        결제하기
+      </Button>
+      <Button onClick={onCheck} bgColor='#2962f6'>
         결제하기
       </Button>
     </Layout>
