@@ -6,7 +6,7 @@ const StyledButton = styled.button`
   cursor: pointer;
   border-radius: 5px;
   border: none;
-  background-color: ${(props) => props.theme.colors.mainGreen};
+  background-color: ${(props) => (props.bgColor ? props.bgColor : props.theme.colors.mainGreen)};
   color: ${(props) => props.theme.colors.white};
   ${(props) => props.theme.font.ButtonText}
 

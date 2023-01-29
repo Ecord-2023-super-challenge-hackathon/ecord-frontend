@@ -1,10 +1,29 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import ReceiptInfo from './Component/ReceiptInfo';
 import Typography from '../../component/Typography/Typography';
 import { FiArrowLeft, FiDownload } from 'react-icons/fi';
 import VatInfo from './Component/VatInfo';
 import CardInfo from './Component/CardInfo';
+<<<<<<< HEAD
+=======
+import { useParams } from 'react-router-dom';
+import axios from 'axios';
+import { motion, useDragControls } from 'framer-motion';
+import { saveAs } from 'file-saver';
+import domToImage from 'dom-to-image';
+import Stickers from '../../component/Stickers/Stickers';
+
+const Sticker = styled(motion.img)`
+  cursor: pointer;
+  width: 66px;
+  height: 66px;
+  object-fit: cover;
+  margin: 15px 13px;
+  position: absolute;
+  z-index: 10;
+`;
+>>>>>>> 77c00f4e39072131d22e7adee21a1893f8760935
 
 const AllWrapper = styled.div`
   width: 100%;
@@ -81,43 +100,64 @@ const DecoButton = styled.button`
 
 const Img = styled.img``;
 
+<<<<<<< HEAD
 const ReceiptDetail = ({ data }) => {
   console.log(data);
 
   //이미지 URL 변수 -> 아직 기능 구현 안됨.
   const [imgURL, setImgURL] = useState('img/DecoButton.png');
+=======
+const ReceiptDetail = () => {
+  // 여기서부터 스티커
+>>>>>>> 77c00f4e39072131d22e7adee21a1893f8760935
 
-  const [address, setAddress] = useState('인천광역시 미추홀구 인하로 53');
-  const [storeName, setStoreName] = useState('카페삼층 인하대점');
+  const [stickerList, setStickerList] = useState([]);
+  const [stickerOnList, setStickerOnList] = useState([]);
+  const [onSticker, setOnSticker] = useState(false);
+  const controls = useDragControls();
+  const cardRef = useRef();
 
-  //구매한 물품, 가격 등등을 나타내는 배열
-  const MenuList = [
-    { menuName: 'T)제주유기농말차', menuEachPrice: '6300', menuCount: '2', menuTotalPrice: '6300' },
-    { menuName: 'S)에스프레소', menuEachPrice: '6300', menuCount: '1', menuTotalPrice: '6300' },
-    { menuName: 'S)자몽홍차레몬티', menuEachPrice: '4300', menuCount: '2', menuTotalPrice: '8600' },
-    { menuName: '딸기생크림케이크', menuEachPrice: '6300', menuCount: '1', menuTotalPrice: '6300' },
-  ];
+  const onDownloadBtn = () => {
+    const card = cardRef.current;
+    const filter = (card) => {
+      return card.tagName !== 'BUTTON';
+    };
+    domToImage.toBlob(card, { filter: filter }).then((blob) => {
+      saveAs(blob, 'card.png');
+    });
+  };
 
-  //과세물품가액
-  const [taxablePrice, settaxablePrice] = useState('27,872');
-  //부가세
-  const [vat, setVat] = useState('228');
-  //합계
-  const [totalVat, setTotalVat] = useState('28,100');
+  useEffect(() => {
+    axios.get(`${process.env.REACT_APP_API}/sticker/load`).then((r) => {
+      console.log(r.data);
+      setStickerList(r.data);
+      setStickerOnList(new Array(r.data.length).fill(false));
+    });
+  }, []);
 
-  //결제 카드 정보
-  const [cardName, setCardName] = useState('0014 현대');
-  //카드 비번
-  const [cardNumber, setCardNumber] = useState('29481293**434**/00312343');
-  // 지불 방법
-  const [payMent, setPayMent] = useState('일시불');
-  // 얼마 지불했는지
-  const [payPrice, setPayPrice] = useState('28,000');
+  // 여기까지 스티커
+  const { receiptIndex } = useParams();
+  const [receiptDetail, setReceiptDetail] = useState([]);
+
+  useEffect(() => {
+    const user_index = localStorage.getItem('user_index');
+    axios
+      .get(`${process.env.REACT_APP_API}/users/${user_index}/receipts/${receiptIndex}`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+      })
+      .then((r) => {
+        console.log(r.data);
+        setReceiptDetail(r.data);
+      });
+  }, []);
 
   const [payDay, setPayDay] = useState('2023-04-31 09:13:43');
 
   const { brand_name, receipt_img_url, product_name, ea, date, total_cost } = data;
   return (
+<<<<<<< HEAD
     <>
       {/* <AllWrapper>
         <TitleWrapper>
@@ -153,6 +193,77 @@ const ReceiptDetail = ({ data }) => {
         </DecoButton>
       </AllWrapper> */}
     </>
+=======
+    <Layout>
+      <div className='card' ref={cardRef} style={{ position: 'relative' }}>
+        <Stickers
+          onSticker={onSticker}
+          setOnSticker={setOnSticker}
+          stickerList={stickerList}
+          setStickerOnList={setStickerOnList}
+          stickerOnList={stickerOnList}
+        />
+        <button type='button' onClick={() => setOnSticker(!onSticker)}>
+          스티커 키자
+        </button>
+        {stickerOnList.map(
+          (a, i) =>
+            a && (
+              <Sticker
+                dragMomentum={false}
+                dragElastic={0.1}
+                whileDrag={{ scale: 1.2 }}
+                drag
+                dragControls={controls}
+                whileTap={{ cursor: 'grabbing' }}
+                key={i}
+                src={`${process.env.REACT_APP_API}${stickerList[i].sticker_url}`}
+              />
+            ),
+        )}
+
+        <AllWrapper>
+          <TitleWrapper>
+            <FiArrowLeft size={22} />
+            <Typography SmallTitleText>영수증 상세보기</Typography>
+            <FiDownload size={20} className='downBtn' onClick={onDownloadBtn} />
+          </TitleWrapper>
+          <ReceiptPaper>
+            <ImgWrapper>
+              <ImgSection>
+                <Img
+                  className='receiptImg'
+                  alt='receiptImg'
+                  style={{ height: '20px' }}
+                  src='http://43.207.42.44:4000/images/99857F4F5E738F472F.png'
+                />
+              </ImgSection>
+            </ImgWrapper>
+
+            <AlignWrapper>
+              <ReceiptInfo
+                address={receiptDetail.address}
+                storeName={receiptDetail.brand_name}
+                MenuList={receiptDetail.product_name}
+                costList={receiptDetail.cost}
+              />
+              <VatInfo
+                taxablePrice={receiptDetail.serial_number}
+                vat={receiptDetail.receipt_index}
+                totalVat={receiptDetail.total_cost}
+              />
+              <CardInfo
+                cardName={receiptDetail.card_company}
+                cardNumber={receiptDetail.card_number}
+                payMent='일시불'
+                payPrice={receiptDetail.total_cost}
+              />
+            </AlignWrapper>
+          </ReceiptPaper>
+        </AllWrapper>
+      </div>
+    </Layout>
+>>>>>>> 77c00f4e39072131d22e7adee21a1893f8760935
   );
 };
 

@@ -3,6 +3,7 @@ import { SlOptions } from 'react-icons/sl';
 import Typography from '../Typography/Typography';
 import theme from '../../assets/theme/Theme';
 import Menus from './Menus';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 const ReceiptPaper = styled.div`
   background-color: ${(props) => props.theme.colors.lightGray};
@@ -21,6 +22,8 @@ const Photo = styled.img`
   height: 25px;
   width: 25px;
   border-radius: 100%;
+  object-fit: cover;
+  overflow: hidden;
 `;
 
 const Line = styled.div`
@@ -45,7 +48,7 @@ const Total = styled.div`
 const Up = styled.div``;
 const Down = styled.div``;
 
-const Receipt = ({ data }) => {
+const Receipt = ({ data, id, onClick }) => {
   const { brand_name, receipt_img_url, product_name, ea, date, total_cost } = data;
   const textOverflow = {
     overflow: 'hidden',
@@ -54,7 +57,7 @@ const Receipt = ({ data }) => {
   };
 
   return (
-    <ReceiptPaper>
+    <ReceiptPaper id={id} onClick={onClick}>
       <Up>
         <StoreWrapper>
           <Photo src={`${process.env.REACT_APP_API}${receipt_img_url}`} />

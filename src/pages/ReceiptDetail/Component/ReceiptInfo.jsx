@@ -27,16 +27,8 @@ const MenuWrapper = styled.div`
 `;
 
 const ReceiptInfo = (props) => {
-  const MenuList = props.MenuList;
-
-  let MenuView = MenuList.map((v) => (
-    <Menu
-      menuName={v.menuName}
-      menuEachPrice={v.menuEachPrice}
-      menuCount={v.menuCount}
-      menuTotalPrice={v.menuTotalPrice}
-    />
-  ));
+  const { MenuList, costList } = props;
+  console.log(MenuList);
 
   return (
     <>
@@ -47,7 +39,12 @@ const ReceiptInfo = (props) => {
         <TitleMargin>
           <Typography>{props.storeName}</Typography>
         </TitleMargin>
-        <MenuWrapper>{MenuView}</MenuWrapper>
+        <MenuWrapper>
+          {MenuList &&
+            MenuList.map((v, i) => (
+              <Menu key={i} menuName={v} menuEachPrice={costList[i]} menuCount='1' menuTotalPrice={costList[i]} />
+            ))}
+        </MenuWrapper>
       </Wrapper>
     </>
   );
