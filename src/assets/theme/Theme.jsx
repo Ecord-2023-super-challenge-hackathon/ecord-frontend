@@ -48,6 +48,11 @@ const font = {
       font-weight: 400;
       font-size: 10px;
     `,
+  SubTitle: `
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 30px;
+    `,
 };
 
 const flex = {
