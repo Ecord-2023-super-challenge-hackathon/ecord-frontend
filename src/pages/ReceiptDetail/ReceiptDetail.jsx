@@ -12,8 +12,11 @@ import { motion, useDragControls } from 'framer-motion';
 import { saveAs } from 'file-saver';
 import domToImage from 'dom-to-image';
 import Stickers from '../../component/Stickers/Stickers';
+import emptyImg from './EmptyImg.png';
+import temp from './monitor-g0dc03eb6e_640.jpg';
 import { useNavigate } from 'react-router-dom';
 import Deco from './DecoButton.png';
+
 const Sticker = styled(motion.img)`
   cursor: pointer;
   width: 66px;
@@ -51,6 +54,7 @@ const ReceiptPaper = styled.div`
 `;
 
 const ImgSection = styled.div`
+  cursor: pointer;
   width: 236px;
   height: 124px;
   margin-top: 24px;
@@ -117,7 +121,6 @@ const ReceiptDetail = () => {
 
   useEffect(() => {
     axios.get(`${process.env.REACT_APP_API}/sticker/load`).then((r) => {
-      console.log(r.data);
       setStickerList(r.data);
       setStickerOnList(new Array(r.data.length).fill(false));
     });
@@ -140,6 +143,24 @@ const ReceiptDetail = () => {
         setReceiptDetail(r.data);
       });
   }, []);
+
+  const postImage = () => {
+    const user_index = localStorage.getItem('user_index');
+
+    axios
+      .post(
+        `${process.env.REACT_APP_API}/users/${user_index}/receipts/${receiptIndex}/image`,
+        {
+          body: temp,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('token')}`,
+          },
+        },
+      )
+      .then((r) => console.log(r));
+  };
 
   const navigate = useNavigate();
 
@@ -175,20 +196,24 @@ const ReceiptDetail = () => {
         )}
 
         <AllWrapper>
-          <TitleWrapper onClick={navigateToBefore}>
-            <FiArrowLeft size={22} />
+          <TitleWrapper>
+            <FiArrowLeft style={{ cursor: 'pointer' }} size={22} onClick={navigateToBefore} />
             <Typography SmallTitleText>영수증 상세보기</Typography>
-            <FiDownload size={20} className='downBtn' onClick={onDownloadBtn} />
+            <FiDownload style={{ cursor: 'pointer' }} size={20} className='downBtn' onClick={onDownloadBtn} />
           </TitleWrapper>
           <ReceiptPaper>
             <ImgWrapper>
-              <ImgSection>
-                <Img
-                  className='receiptImg'
-                  alt='receiptImg'
-                  style={{ height: '20px' }}
-                  src='http://43.207.42.44:4000/images/99857F4F5E738F472F.png'
-                />
+              <ImgSection onClick={postImage}>
+                {receiptDetail.content_img_url ? (
+                  <Img
+                    className='receiptImg'
+                    alt='receiptImg'
+                    style={{ height: '20px' }}
+                    src={`${process.env.REACT_APP_API}${receiptDetail.content_img_url}`}
+                  />
+                ) : (
+                  <Img style={{ width: '158px' }} className='receiptImg' alt='receiptImg' src={emptyImg} />
+                )}
               </ImgSection>
             </ImgWrapper>
 
