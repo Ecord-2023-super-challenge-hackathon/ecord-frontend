@@ -77,10 +77,11 @@ const PopReciept = ({ state = [], setState }) => {
     navigate(`/receipt/${state.receipt_index}`);
   };
 
+  console.log(state);
   return (
     <>
       <AnimatePresence>
-        {state !== undefined && (
+        {state && (
           <Background initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
             <Container>
               <ArrowWrapper>
@@ -91,7 +92,7 @@ const PopReciept = ({ state = [], setState }) => {
                 <Margin height='30' />
                 <AlignWrapper>
                   <ReceiptInfo address={address} storeName={brand_name} MenuList={product_name} costList={cost} />
-                  <VatInfo taxablePrice={serial_number} vat={receipt_index} totalVat={total_cost} />
+                  <VatInfo taxablePrice={serial_number} vat='200' totalVat={total_cost} />
                   <CardInfo cardName={card_company} cardNumber={card_number} payMent='일시불' payPrice={total_cost} />
                 </AlignWrapper>
                 <Margin height='30' />
