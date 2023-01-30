@@ -15,7 +15,7 @@ import Stickers from '../../component/Stickers/Stickers';
 import { useNavigate } from 'react-router-dom';
 import { ReactComponent as Deco } from './DecoButton.svg';
 import { ReactComponent as ImageIcon } from './ImageIcon.svg';
-import photo from './image 204.png';
+import photo from './lee.jpeg';
 import Margin from '../../component/Margin/Margin';
 import Flex from '../../component/Flex/Flex';
 
@@ -170,6 +170,8 @@ const ReceiptDetail = () => {
     navigate('/main');
   };
 
+  console.log('이건' + isImage);
+
   return (
     <>
       <motion.div
@@ -213,7 +215,12 @@ const ReceiptDetail = () => {
                 <ImgWrapper>
                   <ImgSection onClick={() => setIsImage(true)}>
                     {isImage ? (
-                      <Img className='receiptImg' alt='receiptImg' style={{ height: '140px' }} src={photo} />
+                      <Img
+                        className='receiptImg'
+                        alt='receiptImg'
+                        style={{ height: '125px', borderRadius: '10px' }}
+                        src={photo}
+                      />
                     ) : (
                       <Flex flexCenter column>
                         <ImageIcon />

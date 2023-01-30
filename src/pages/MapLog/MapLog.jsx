@@ -141,7 +141,7 @@ const MapLog = ({ isOpen, setIsOpen, toStringByFormatting, day }) => {
             ></img>
             <MapMemoWrapper>
               <img src={leaf} style={{ width: '16px', height: '16px', marginRight: '5px' }} />
-              <MapMemo placeholder='나의 푸른 기록을 짧게 남겨보세요.' />
+              <MapMemo placeholder='지독하게 사랑했다..★' />
             </MapMemoWrapper>
           </MapWrapper>
           <ReceiptWrapper>
