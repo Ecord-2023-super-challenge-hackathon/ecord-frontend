@@ -95,7 +95,7 @@ const FooterNavigate = () => {
             }}
           >
             <MdHomeFilled id='IconCssHome' />
-            <Typography fontSize='10px' color={myColor}>
+            <Typography FooterText fontSize='10px' color={myColor}>
               홈
             </Typography>
           </EachWrapper>
@@ -109,7 +109,7 @@ const FooterNavigate = () => {
             }}
           >
             <RiCalendar2Line id='IconCssCal' />
-            <Typography fontSize='10px' color={myColor}>
+            <Typography FooterText fontSize='10px' color={myColor}>
               캘린더
             </Typography>
           </EachWrapper>
@@ -123,7 +123,7 @@ const FooterNavigate = () => {
             }}
           >
             <HiOutlineUser id='IconCssMy' />
-            <Typography fontSize='10px' color={myColor}>
+            <Typography FooterText fontSize='10px' color={myColor}>
               마이
             </Typography>
           </EachWrapper>
