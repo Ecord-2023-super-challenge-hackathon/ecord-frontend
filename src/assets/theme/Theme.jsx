@@ -13,6 +13,7 @@ const colors = {
   darkGreen: '#1E8D73',
   favoriteGray: '#6F7276',
   PayDayColor: '#A4A4B8',
+  calendarBlue: '#444867',
 };
 
 const shadow = {
@@ -51,6 +52,7 @@ const font = {
       line-height: 17px;
     `,
   SmallText2: `
+  font-family: 'Pretendard-regular';
     font-weight: 400;
     font-size: 12px;
   `,
@@ -71,10 +73,12 @@ const font = {
     font-size: 16px;
   `,
   TooSmallText: `
+  font-family: 'Pretendard-regular';
     font-weight: 400;
     font-size: 9px;
   `,
   BoldText: `
+  font-family: 'Pretendard-regular';
   font-weight: 700;
   font-size: 12px;
   `,
@@ -124,6 +128,11 @@ const font = {
     font-size: 8px;
     line-height: 16px;
     color: ${colors.receiptGray};
+  `,
+  calendarTitle: `
+  font-family: 'Pretendard-regular';
+    font-weight: 500;
+    font-size: 12px;
   `,
 };
 
