@@ -6,6 +6,7 @@ import Layout from '../../component/Layout/Layout';
 import Input from './Input';
 import { ReactComponent as Ecord_Title } from '../../assets/svg/Ecord_Title.svg';
 import Button from '../../component/Button/Button';
+import { motion } from 'framer-motion';
 
 const Submit = styled.button`
   background-color: ${(props) => props.theme.colors.mainGreen}; //
@@ -44,14 +45,23 @@ const Login = () => {
   };
 
   return (
-    <Layout>
-      <Ecord_Title style={{ marginTop: '160px', marginBottom: '80px' }} />
-      <Input name='id' value={user.id} onChange={userHandler} />
-      <Input type='password' name='password' value={user.password} onChange={userHandler} />
-      <Button hover type='button' onClick={login} style={{ marginTop: '30px' }}>
-        로그인
-      </Button>
-    </Layout>
+    <>
+      <motion.div
+        initial={{ x: 50, y: 0, opacity: 0 }}
+        animate={{ x: 0, y: 0, opacity: 1 }}
+        exit={{ x: -50, y: 0, opacity: 0 }}
+        transition={{ ease: 'easeOut', duration: 0.7 }}
+      >
+        <Layout>
+          <Ecord_Title style={{ marginTop: '160px', marginBottom: '80px' }} />
+          <Input name='id' value={user.id} onChange={userHandler} />
+          <Input type='password' name='password' value={user.password} onChange={userHandler} />
+          <Button hover type='button' onClick={login} style={{ marginTop: '30px' }}>
+            로그인
+          </Button>
+        </Layout>
+      </motion.div>
+    </>
   );
 };
 
