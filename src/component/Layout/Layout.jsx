@@ -6,6 +6,7 @@ const Background = styled.div`
   height: 100vh;
   display: flex;
   justify-content: center;
+  background-color: ${(props) => (props.color ? props.color : 'white')};
 `;
 
 const Width = styled.div`
@@ -17,17 +18,16 @@ const Width = styled.div`
   flex-direction: column;
   margin-bottom: 78px;
   align-items: center;
-  background-color: ${(props) => props.theme.colors.backgroundWhite};
-  background-color: ${(props) => props.gray && '#f1f1f1'};
+  background-color: ${(props) => (props.color ? props.color : 'white')};
 
   @media (min-width: 400px) {
     width: 360px;
   }
 `;
 
-const Layout = ({ children, gray }) => (
-  <Background>
-    <Width gray={gray}>{children}</Width>
+const Layout = ({ children, color }) => (
+  <Background color={color}>
+    <Width color={color}>{children}</Width>
   </Background>
 );
 
