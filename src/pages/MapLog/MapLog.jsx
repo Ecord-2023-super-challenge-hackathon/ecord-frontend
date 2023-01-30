@@ -16,6 +16,7 @@ const AllWrapper = styled.div`
   display: flex;
   justify-content: center;
   background-color: #ffffff;
+  padding-bottom: 80px;
 `;
 
 const AllLayout = styled.div`
@@ -54,7 +55,7 @@ const MapMemoWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-left: 13px;
+  padding-left: 16px;
   border-radius: 10px;
   margin-top: 16px;
 `;
@@ -64,6 +65,7 @@ const MapMemo = styled.input`
   height: 44px;
   background-color: #eef0f3;
   border: none;
+  border-radius: 10px;
 `;
 
 const ReceiptWrapper = styled.div`
