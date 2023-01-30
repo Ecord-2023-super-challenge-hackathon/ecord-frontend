@@ -18,7 +18,7 @@ const ButtonWrapper = styled.div`
 
 const POS = () => {
   const onClickFunction = () => {
-    axios.post('http://43.207.42.44:4000/message', 'sender send');
+    axios.post(`${process.env.REACT_APP_API}/message`, 'sender send');
     console.log('sender success');
     Toast('결제가 완료되었습니다.');
   };

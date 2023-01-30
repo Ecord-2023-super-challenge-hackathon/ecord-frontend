@@ -13,9 +13,9 @@ import { saveAs } from 'file-saver';
 import domToImage from 'dom-to-image';
 import Stickers from '../../component/Stickers/Stickers';
 import emptyImg from './EmptyImg.png';
-import temp from './image 204.png';
 import { useNavigate } from 'react-router-dom';
 import Deco from './DecoButton.png';
+import photo from './image 204.png';
 
 const Sticker = styled(motion.img)`
   cursor: pointer;
@@ -142,25 +142,26 @@ const ReceiptDetail = () => {
       });
   }, []);
 
-  const postImage = () => {
-    const user_index = localStorage.getItem('user_index');
+  // const postImage = () => {
+  //   const user_index = localStorage.getItem('user_index');
 
-    axios
-      .post(
-        `${process.env.REACT_APP_API}/users/${user_index}/receipt/${receiptIndex}/image`,
-        {
-          content: temp,
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem('token')}`,
-          },
-        },
-      )
-      .then((r) => console.log(r));
-  };
+  //   axios
+  //     .post(
+  //       `${process.env.REACT_APP_API}/users/${user_index}/receipt/${receiptIndex}/image`,
+  //       {
+  //         content: temp,
+  //       },
+  //       {
+  //         headers: {
+  //           Authorization: `Bearer ${localStorage.getItem('token')}`,
+  //         },
+  //       },
+  //     )
+  //     .then((r) => console.log(r));
+  // };
 
   const navigate = useNavigate();
+  const [isImage, setIsImage] = useState(false);
 
   const navigateToBefore = () => {
     navigate('/main');
@@ -200,14 +201,9 @@ const ReceiptDetail = () => {
         <AllWrapper>
           <ReceiptPaper>
             <ImgWrapper>
-              <ImgSection onClick={postImage}>
-                {receiptDetail.content_img_url ? (
-                  <Img
-                    className='receiptImg'
-                    alt='receiptImg'
-                    style={{ height: '20px' }}
-                    src={`${process.env.REACT_APP_API}${receiptDetail.content_img_url}`}
-                  />
+              <ImgSection onClick={() => setIsImage(true)}>
+                {isImage ? (
+                  <Img className='receiptImg' alt='receiptImg' style={{ height: '140px' }} src={photo} />
                 ) : (
                   <Img style={{ width: '158px' }} className='receiptImg' alt='receiptImg' src={emptyImg} />
                 )}

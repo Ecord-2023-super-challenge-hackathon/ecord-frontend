@@ -74,7 +74,7 @@ const PopReciept = ({ state = [], setState }) => {
   } = state;
 
   const goToReceiptDetail = () => {
-    navigate(`/receipt/${state.receipt_index}`);
+    navigate(`/receipt/${receipt_index}`);
   };
 
   console.log(state);
