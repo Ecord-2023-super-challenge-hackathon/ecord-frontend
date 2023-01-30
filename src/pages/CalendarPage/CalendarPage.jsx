@@ -48,13 +48,13 @@ const CalendarPage = () => {
     return `0${value}`;
   }
 
-  function toStringByFormatting(source, delimiter = '.') {
+  const toStringByFormatting = (source, delimiter = '.') => {
     const year = source.getFullYear();
     const month = leftPad(source.getMonth() + 1);
     const day = leftPad(source.getDate());
 
     return [year, month, day].join(delimiter);
-  }
+  };
 
   useEffect(() => {
     const user_index = localStorage.getItem('user_index');
@@ -87,7 +87,7 @@ const CalendarPage = () => {
             MY ECORD
           </Typography>
           <Typography calendarTitle color='calendarBlue'>
-            {toStringByFormatting(day)}{' '}
+            {toStringByFormatting(day)}
           </Typography>
         </Flex>
         <Margin height='15' />
@@ -112,7 +112,7 @@ const CalendarPage = () => {
           </ScrollBox>
         )}
       </InfoWrapper>
-      <MapLog isOpen={isOpen} setIsOpen={setIsOpen} />
+      <MapLog isOpen={isOpen} setIsOpen={setIsOpen} toStringByFormatting={toStringByFormatting} day={day} />
       {/* <UpScrollBox /> */}
     </Layout>
   );

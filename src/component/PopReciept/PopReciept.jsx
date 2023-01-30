@@ -77,7 +77,6 @@ const PopReciept = ({ state = [], setState }) => {
     navigate(`/receipt/${receipt_index}`);
   };
 
-  console.log(state);
   return (
     <>
       <AnimatePresence>
