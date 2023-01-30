@@ -11,7 +11,6 @@ import PurchaseBox from './Component/PurchaseBox';
 import axios from 'axios';
 import UpScrollBox from './Component/UpScrollBox';
 import MapLog from '../MapLog/MapLog';
-import { motion } from 'framer-motion';
 
 const InfoWrapper = styled.div`
   width: 100%;
@@ -77,53 +76,45 @@ const CalendarPage = () => {
   }, [day]);
 
   return (
-    <>
-      <motion.div
-        initial={{ x: 50, y: 0, opacity: 0 }}
-        animate={{ x: 0, y: 0, opacity: 1 }}
-        exit={{ x: -50, y: 0, opacity: 0 }}
-        transition={{ ease: 'easeOut', duration: 0.7 }}
-      >
-        <Layout>
-          <Margin height='20' />
-          <Calendar onChange={onChange} value={day} locale='en' />
-          <Margin height='20' />
-          <InfoWrapper>
-            <Margin height='22' />
-            <Flex flexCenter justify='space-between' style={{ width: '312px' }}>
-              <Typography calendarTitle color='calendarBlue'>
-                MY ECORD
-              </Typography>
-              <Typography calendarTitle color='calendarBlue'>
-                {toStringByFormatting(day)}{' '}
-              </Typography>
-            </Flex>
-            <Margin height='15' />
-            <StyledHr />
-            <Margin height='25' />
-            {selectedReceipt.length === 0 ? (
-              <>
-                <Margin height='20' />
-                <Typography BoldText>결제 내역이 없어요.</Typography>
-              </>
-            ) : (
-              <ScrollBox>
-                {selectedReceipt.map((data) => (
-                  <PurchaseBox
-                    id={data.receipt_index}
-                    data={data}
-                    key={data.receipt_index}
-                    day={toStringByFormatting(day)}
-                  />
-                ))}
-                <Margin height='20' />
-              </ScrollBox>
-            )}
-          </InfoWrapper>
-          <MapLog isOpen={isOpen} setIsOpen={setIsOpen} />
-        </Layout>
-      </motion.div>
-    </>
+    <Layout>
+      <Margin height='20' />
+      <Calendar onChange={onChange} value={day} locale='en' />
+      <Margin height='20' />
+      <InfoWrapper>
+        <Margin height='22' />
+        <Flex flexCenter justify='space-between' style={{ width: '312px' }}>
+          <Typography calendarTitle color='calendarBlue'>
+            MY ECORD
+          </Typography>
+          <Typography calendarTitle color='calendarBlue'>
+            {toStringByFormatting(day)}{' '}
+          </Typography>
+        </Flex>
+        <Margin height='15' />
+        <StyledHr />
+        <Margin height='25' />
+        {selectedReceipt.length === 0 ? (
+          <>
+            <Margin height='20' />
+            <Typography BoldText>결제 내역이 없어요.</Typography>
+          </>
+        ) : (
+          <ScrollBox>
+            {selectedReceipt.map((data) => (
+              <PurchaseBox
+                id={data.receipt_index}
+                data={data}
+                key={data.receipt_index}
+                day={toStringByFormatting(day)}
+              />
+            ))}
+            <Margin height='20' />
+          </ScrollBox>
+        )}
+      </InfoWrapper>
+      <MapLog isOpen={isOpen} setIsOpen={setIsOpen} />
+      {/* <UpScrollBox /> */}
+    </Layout>
   );
 };
 
