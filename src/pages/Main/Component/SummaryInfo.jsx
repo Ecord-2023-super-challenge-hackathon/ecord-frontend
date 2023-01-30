@@ -60,7 +60,7 @@ const CircleProgressBarWrapper = styled.div`
 const SummaryInfo = (props) => {
   //-> 이부분만 axoios로 값들 가져와서 바꿔주면 될듯
   // 이용자 이름
-  const [userName, setUserName] = useState('지애');
+  const [userName, setUserName] = useState('동령');
   // 탄소 배출 막은 무게
   const [carbonEmissions, setCarbonEmissions] = useState(45);
   // 환급까지 남은 횟수
