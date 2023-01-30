@@ -11,6 +11,7 @@ import map from './Group 6261.png';
 import pin from './pin.png';
 import { motion } from 'framer-motion';
 
+const WEEK_DAY = ['일', '월', '화', '수', '목', '금', '토'];
 const { kakao } = window;
 
 const AllWrapper = styled.div`
@@ -87,7 +88,7 @@ const ReceiptWrapper = styled.div`
   margin-top: 35px;
 `;
 
-const MapLog = ({ isOpen, setIsOpen }) => {
+const MapLog = ({ isOpen, setIsOpen, toStringByFormatting, day }) => {
   const [receipts, setReceipts] = useState([]);
 
   useEffect(() => {
@@ -110,7 +111,7 @@ const MapLog = ({ isOpen, setIsOpen }) => {
         <AllLayout>
           <DaySelectWrapper onClick={() => setIsOpen(!isOpen)} style={{ borderRadius: '16px 16px 0px 0px' }}>
             <Typography contentText color='backgroundWhite'>
-              2022.01.12(화) 확인하기
+              {toStringByFormatting(day)}({WEEK_DAY[day.getDay()]}) 확인하기
             </Typography>
             {isOpen ? (
               <IoIosArrowDown size={20} style={{ position: 'absolute', right: '40px', color: 'white' }} />
