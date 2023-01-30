@@ -22,6 +22,7 @@ const Typography = styled.p`
   ${(props) => props.BoldText && props.theme.font.BoldText}
   ${(props) => props.favoriteSmall && props.theme.font.favoriteSmall}
   ${(props) => props.favoriteVerySmall && props.theme.font.favoriteVerySmall}
+  ${(props) => props.calendarTitle && props.theme.font.calendarTitle}
 `;
 
 export default Typography;
