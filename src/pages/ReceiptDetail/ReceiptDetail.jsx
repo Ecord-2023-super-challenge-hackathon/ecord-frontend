@@ -13,7 +13,7 @@ import { saveAs } from 'file-saver';
 import domToImage from 'dom-to-image';
 import Stickers from '../../component/Stickers/Stickers';
 import emptyImg from './EmptyImg.png';
-import temp from './monitor-g0dc03eb6e_640.jpg';
+import temp from './image 204.png';
 import { useNavigate } from 'react-router-dom';
 import Deco from './DecoButton.png';
 
@@ -147,9 +147,9 @@ const ReceiptDetail = () => {
 
     axios
       .post(
-        `${process.env.REACT_APP_API}/users/${user_index}/receipts/${receiptIndex}/image`,
+        `${process.env.REACT_APP_API}/users/${user_index}/receipt/${receiptIndex}/image`,
         {
-          body: temp,
+          content: temp,
         },
         {
           headers: {
