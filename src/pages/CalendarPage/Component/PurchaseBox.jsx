@@ -1,15 +1,23 @@
+import styled from 'styled-components';
 import React, { useState } from 'react';
 import Typography from '../../../component/Typography/Typography';
 import Margin from '../../../component/Margin/Margin';
 import Flex from '../../../component/Flex/Flex';
-import { ReactComponent as Icon } from '../../../assets/svg/sample.svg';
+
+const Photo = styled.img`
+  height: 30px;
+  width: 30px;
+  border-radius: 100%;
+  object-fit: cover;
+  overflow: hidden;
+`;
 
 const PurchaseBox = ({ data, day }) => {
   return (
     <>
       <Flex flexCenter justify='space-between' style={{ width: '312px' }}>
         <Flex flexCenter>
-          <Icon />
+          <Photo src={`${process.env.REACT_APP_API}${data.receipt_img_url}`} />
           <Margin width='15' />
           <Flex flexCenter column align='stretch'>
             <Typography BoldText>{data.brand_name}</Typography>
