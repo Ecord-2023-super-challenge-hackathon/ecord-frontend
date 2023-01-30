@@ -9,6 +9,7 @@ import FooterNavigate from '../../component/FooterNavigate';
 import Flex from '../../component/Flex/Flex';
 import PurchaseBox from './Component/PurchaseBox';
 import axios from 'axios';
+import UpScrollBox from './Component/UpScrollBox';
 
 const InfoWrapper = styled.div`
   width: 100%;
@@ -109,6 +110,7 @@ const CalendarPage = () => {
           </ScrollBox>
         )}
       </InfoWrapper>
+      <UpScrollBox />
       <FooterNavigate />
     </Layout>
   );
