@@ -88,22 +88,22 @@ const ReceiptWrapper = styled.div`
   margin-top: 35px;
 `;
 
-const MapLog = ({ isOpen, setIsOpen, toStringByFormatting, day }) => {
-  const [receipts, setReceipts] = useState([]);
+const MapLog = ({ receipts, isOpen, setIsOpen, toStringByFormatting, day }) => {
+  // const [receipts, setReceipts] = useState([]);
 
-  useEffect(() => {
-    const user_index = localStorage.getItem('user_index');
-    console.log(process.env.REACT_APP_API);
-    axios
-      .get(`${process.env.REACT_APP_API}/users/${user_index}/receipts`, {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem('token')}`,
-        },
-      })
-      .then((r) => {
-        setReceipts(r.data);
-      });
-  }, []);
+  // useEffect(() => {
+  //   const user_index = localStorage.getItem('user_index');
+  //   console.log(process.env.REACT_APP_API);
+  //   axios
+  //     .get(`${process.env.REACT_APP_API}/users/${user_index}/receipts`, {
+  //       headers: {
+  //         Authorization: `Bearer ${localStorage.getItem('token')}`,
+  //       },
+  //     })
+  //     .then((r) => {
+  //       setReceipts(r.data);
+  //     });
+  // }, []);
 
   return (
     <>
@@ -141,7 +141,7 @@ const MapLog = ({ isOpen, setIsOpen, toStringByFormatting, day }) => {
             ></img>
             <MapMemoWrapper>
               <img src={leaf} style={{ width: '16px', height: '16px', marginRight: '5px' }} />
-              <MapMemo placeholder='나의 푸른 기록을 짧게 남겨보세요.' />
+              <MapMemo placeholder='지독하게 사랑했다..★' />
             </MapMemoWrapper>
           </MapWrapper>
           <ReceiptWrapper>

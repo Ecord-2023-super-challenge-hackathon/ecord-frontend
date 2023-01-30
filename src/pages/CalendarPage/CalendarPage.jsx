@@ -39,6 +39,7 @@ const CalendarPage = () => {
   const [day, onChange] = useState(new Date());
   const [receipts, setReceipts] = useState([]);
   const [selectedReceipt, setSelectedReceipt] = useState([]);
+  const [detail, setDetail] = useState([]);
 
   function leftPad(value) {
     if (value >= 10) {
@@ -72,7 +73,24 @@ const CalendarPage = () => {
 
   useEffect(() => {
     setSelectedReceipt(receipts.filter((r) => r.date === toStringByFormatting(day)));
-    console.log(selectedReceipt);
+    const user_index = localStorage.getItem('user_index');
+
+    axios
+      .post(
+        `${process.env.REACT_APP_API}/users/${user_index}/receipts/date`,
+        {
+          date: toStringByFormatting(day),
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('token')}`,
+          },
+        },
+      )
+      .then((r) => {
+        console.log(r.data);
+        setDetail(r.data);
+      });
   }, [day]);
 
   return (
@@ -112,7 +130,13 @@ const CalendarPage = () => {
           </ScrollBox>
         )}
       </InfoWrapper>
-      <MapLog isOpen={isOpen} setIsOpen={setIsOpen} toStringByFormatting={toStringByFormatting} day={day} />
+      <MapLog
+        receipts={detail}
+        isOpen={isOpen}
+        setIsOpen={setIsOpen}
+        toStringByFormatting={toStringByFormatting}
+        day={day}
+      />
       {/* <UpScrollBox /> */}
     </Layout>
   );
