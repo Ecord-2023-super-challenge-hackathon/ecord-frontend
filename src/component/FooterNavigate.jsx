@@ -11,9 +11,13 @@ const Container = styled.div`
   background-color: #ffffff;
   bottom: 0px;
   height: 78px;
-  width: 360px;
+  width: 100%;
   border-top: 1px solid #73767a;
   z-index: 1;
+
+  @media (min-width: 400px) {
+    width: 360px;
+  }
 `;
 
 const Wrapper = styled.div`

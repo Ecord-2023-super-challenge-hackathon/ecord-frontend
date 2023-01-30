@@ -4,24 +4,29 @@ import Layout from '../../component/Layout/Layout';
 import FooterNavigate from '../../component/FooterNavigate';
 import Receipts from '../../component/Receipt/Receipts';
 import Typography from '../../component/Typography/Typography';
-import { IoIosArrowDown } from 'react-icons/io';
+import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
 import axios from 'axios';
 import leaf from './leaf.png';
-import { motion } from 'framer-motion';
-
-const { kakao } = window;
+import map from './Group 6261.png';
 
 const AllWrapper = styled.div`
   width: 100%;
-  height: auto;
   display: flex;
   justify-content: center;
   background-color: #ffffff;
   padding-bottom: 80px;
+
+  /* ${(props) => props.isOpen || `height: 120px`} */
+  transition: 1s;
+  z-index: 2;
+
+  position: fixed;
+  top: 0;
+  ${(props) => props.isOpen || 'top: 84vh'}
 `;
 
 const AllLayout = styled.div`
-  width: 360px;
+  width: 100%;
   height: auto;
   display: flex;
   justify-content: center;
@@ -29,6 +34,9 @@ const AllLayout = styled.div`
   background-color: '#FFFFFF';
   display: flex;
   flex-wrap: wrap;
+  @media (min-width: 400px) {
+    width: 360px;
+  }
 `;
 
 const DaySelectWrapper = styled.div`
@@ -50,7 +58,7 @@ const MapWrapper = styled.div`
 `;
 
 const MapMemoWrapper = styled.div`
-  width: 87%;
+  width: 326px;
   height: 44px;
   background-color: #eef0f3;
   display: flex;
@@ -75,45 +83,8 @@ const ReceiptWrapper = styled.div`
   margin-top: 35px;
 `;
 
-const MapLog = () => {
+const MapLog = ({ isOpen, setIsOpen }) => {
   const [receipts, setReceipts] = useState([]);
-
-  useEffect(() => {
-    const container = document.getElementById('myMap');
-    const options = {
-      center: new kakao.maps.LatLng(35.12, 129.1),
-      level: 3,
-    };
-    // 지도를 생성합니다.
-    const map = new kakao.maps.Map(container, options);
-    // 주소-좌표 변환 객체를 생성합니다.
-    const geocoder = new kakao.maps.services.Geocoder();
-    // 주소로 좌표를 검색합니다..
-
-    axios.get('');
-
-    geocoder.addressSearch('인천 연수구 청학로6번길 8', function (result, status) {
-      // 정상적으로 검색이 완료됐으면
-      if (status === kakao.maps.services.Status.OK) {
-        var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
-
-        // 결과값으로 받은 위치를 마커로 표시합니다
-        var marker = new kakao.maps.Marker({
-          map: map,
-          position: coords,
-        });
-
-        // 인포윈도우로 장소에 대한 설명을 표시합니다
-        var infowindow = new kakao.maps.InfoWindow({
-          content: '<div style="width:150px;color:red;text-align:center;padding:6px 0;">가메이 쒸펄</div>',
-        });
-        infowindow.open(map, marker);
-
-        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
-        map.setCenter(coords);
-      }
-    });
-  }, []);
 
   useEffect(() => {
     const user_index = localStorage.getItem('user_index');
@@ -131,45 +102,42 @@ const MapLog = () => {
 
   return (
     <>
-      <motion.div
-        initial={{ x: 50, y: 0, opacity: 0 }}
-        animate={{ x: 0, y: 0, opacity: 1 }}
-        exit={{ x: -50, y: 0, opacity: 0 }}
-        transition={{ ease: 'easeOut', duration: 0.7 }}
-      >
-        <AllWrapper>
-          <AllLayout>
-            <DaySelectWrapper>
-              <Typography contentText color='backgroundWhite'>
-                2022.01.12(화) 확인하기
-              </Typography>
-              <IoIosArrowDown size={25} style={{ position: 'absolute', right: '70px', color: 'white' }} />
-            </DaySelectWrapper>
-            <MapWrapper>
-              {' '}
-              <div
-                id='myMap'
-                style={{
-                  width: '312px',
-                  height: '212px',
-                  borderRadius: '10px',
-                }}
-              ></div>
-              <MapMemoWrapper>
-                <img src={leaf} style={{ width: '16px', height: '16px', marginRight: '5px' }} />
-                <MapMemo placeholder='나의 푸른 기록을 짧게 남겨보세요.' />
-              </MapMemoWrapper>
-            </MapWrapper>
-            <ReceiptWrapper>
-              <Typography SmallTitleText style={{ marginLeft: '24px' }}>
-                발급한 전자 영수증
-              </Typography>
-            </ReceiptWrapper>
-            <Receipts receipts={receipts} />
-            <FooterNavigate />
-          </AllLayout>
-        </AllWrapper>
-      </motion.div>
+      <AllWrapper isOpen={isOpen}>
+        <AllLayout>
+          <DaySelectWrapper onClick={() => setIsOpen(!isOpen)} style={{ borderRadius: '16px 16px 0px 0px' }}>
+            <Typography contentText color='backgroundWhite'>
+              2022.01.12(화) 확인하기
+            </Typography>
+            {isOpen ? (
+              <IoIosArrowDown size={20} style={{ position: 'absolute', right: '40px', color: 'white' }} />
+            ) : (
+              <IoIosArrowUp size={20} style={{ position: 'absolute', right: '40px', color: 'white' }} />
+            )}
+          </DaySelectWrapper>
+          <MapWrapper>
+            <img
+              src={map}
+              id='myMap'
+              style={{
+                width: '340px',
+                height: '212px',
+                borderRadius: '10px',
+              }}
+            ></img>
+            <MapMemoWrapper>
+              <img src={leaf} style={{ width: '16px', height: '16px', marginRight: '5px' }} />
+              <MapMemo placeholder='나의 푸른 기록을 짧게 남겨보세요.' />
+            </MapMemoWrapper>
+          </MapWrapper>
+          <ReceiptWrapper>
+            <Typography SmallTitleText style={{ marginLeft: '24px' }}>
+              발급한 전자 영수증
+            </Typography>
+          </ReceiptWrapper>
+          <Receipts receipts={receipts} />
+          <FooterNavigate />
+        </AllLayout>
+      </AllWrapper>
     </>
   );
 };

@@ -29,7 +29,7 @@ const UpScrollBox = () => {
           <Typography contentText color='backgroundWhite'>
             2022.01.12(화) 확인하기
           </Typography>
-          <IoIosArrowUp size={25} style={{ color: 'white' }} />
+          <IoIosArrowUp size={20} style={{ color: 'white' }} />
         </Box>
       </Wrapper>
     </>
