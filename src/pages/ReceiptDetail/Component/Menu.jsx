@@ -19,7 +19,6 @@ const MenuPriceWrapper = styled.div`
 `;
 
 const Menu = (props) => {
-  console.log(props);
   return (
     <>
       <Wrapper>

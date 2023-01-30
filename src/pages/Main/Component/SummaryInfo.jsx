@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Typography from '../../../component/Typography/Typography';
 import { buildStyles, CircularProgressbar } from 'react-circular-progressbar';
@@ -57,7 +57,7 @@ const CircleProgressBarWrapper = styled.div`
   text-align: center;
 `;
 
-const SummaryInfo = () => {
+const SummaryInfo = (props) => {
   //-> 이부분만 axoios로 값들 가져와서 바꿔주면 될듯
   // 이용자 이름
   const [userName, setUserName] = useState('지애');
@@ -66,7 +66,13 @@ const SummaryInfo = () => {
   // 환급까지 남은 횟수
   const [issuances, setIssuances] = useState(4);
   // progressBar 퍼센트
-  const [percentage, setPercentage] = useState(70);
+  const [percentage, setPercentage] = useState(0);
+
+  useEffect(() => {
+    setPercentage((props.receiptsLength % 10) * 10);
+    console.log('바뀐 수 = ', props.receiptsLength);
+    setIssuances(10 - (props.receiptsLength % 10));
+  }, [props]);
 
   return (
     <>
@@ -100,11 +106,14 @@ const SummaryInfo = () => {
             <CircleProgressBarWrapper>
               <CircularProgressbar
                 value={percentage}
+                minValue={0}
+                maxValue={100}
                 text={`${percentage}%`}
                 strokeWidth={9}
                 styles={buildStyles({
                   strokeLinecap: 'butt',
-                  pathTransition: 'none',
+                  pathTransition: 'stroke-dashoffset 0.5s ease 0s',
+                  pathTransitionDuration: 2,
 
                   pathColor: `rgb(255,255,255,${percentage / 100})`,
                   textColor: '#FFFFFF',

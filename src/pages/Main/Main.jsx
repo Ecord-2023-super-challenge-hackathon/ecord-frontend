@@ -15,6 +15,7 @@ const Main = () => {
   const [state, setState] = useState(null);
   const [receipts, setReceipts] = useState([]);
   const [favorites, setFavorites] = useState([]);
+  const [receiptsLen, setReceiptLen] = useState(0);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -28,6 +29,8 @@ const Main = () => {
       })
       .then((r) => {
         setReceipts(r.data);
+        console.log('Main =', r.data.length);
+        setReceiptLen(r.data.length);
       });
 
     axios
@@ -63,7 +66,7 @@ const Main = () => {
       >
         <Layout>
           {state && <PopReciept state={state} setState={setState} />}
-          <SummaryInfo />
+          <SummaryInfo receiptsLength={receiptsLen} />
           <MainFooter favorites={favorites} />
           <RecentReciept />
           <FooterNavigate />
