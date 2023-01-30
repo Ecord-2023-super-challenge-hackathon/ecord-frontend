@@ -128,6 +128,8 @@ const ReceiptDetail = () => {
   const { receiptIndex } = useParams();
   const [receiptDetail, setReceiptDetail] = useState([]);
 
+  let receiptLength;
+
   useEffect(() => {
     const user_index = localStorage.getItem('user_index');
     axios
@@ -139,6 +141,7 @@ const ReceiptDetail = () => {
       .then((r) => {
         console.log(r.data);
         setReceiptDetail(r.data);
+        receiptLength = r.data.length;
       });
   }, []);
 
