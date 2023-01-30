@@ -5,6 +5,7 @@ import Layout from '../../component/Layout/Layout';
 import Typography from '../../component/Typography/Typography';
 import Button from '../../component/Button/Button';
 import { useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 const BigTextWrapper = styled.div`
   width: 310px;
@@ -68,44 +69,57 @@ const SmallLogin = styled.button`
 `;
 
 const Intro = () => {
-
   const navigate = useNavigate();
 
   const onClickSuccess = () => {
-    navigate("/Login");
+    navigate('/Login');
   };
 
   return (
-    <Layout>
-      <BigTextWrapper>
-        <Typography Title>나의 오늘을</Typography>
-      </BigTextWrapper>
-      <BigTextWrapper2>
-        <Typography Title>푸르게 기록하다.</Typography>
-      </BigTextWrapper2>
-      <SmallTextWrapper>
-        <Typography ContentText color='darkGray'>영수증 버려달라는 말은 이제 넣어두세요.</Typography>
-      </SmallTextWrapper>
-      <SmallTextWrapper2>
-        <Typography ContentText color='darkGray'>에코드와 함께 전자영수증을 간편하게 관리해요.</Typography>
-      </SmallTextWrapper2>
-      <ImageWrapper>
-        <Intro_Image></Intro_Image>
-      </ImageWrapper>
-      <ButtonWrapper>
-        <Button onClick={onClickSuccess}>에코드 시작하기</Button>
-      </ButtonWrapper>
-      <LoginWrapper>
-        <SmallQuestion>
-          <Typography ContentText>이미 회원이신가요?</Typography>
-        </SmallQuestion>
-        <SmallLogin>
-          <Typography ContentText color='mainGreen' onClick={onClickSuccess}>로그인</Typography>
-        </SmallLogin>
-      </LoginWrapper>
-    </Layout>
+    <>
+      <motion.div
+        initial={{ x: 50, y: 0, opacity: 0 }}
+        animate={{ x: 0, y: 0, opacity: 1 }}
+        exit={{ x: -50, y: 0, opacity: 0 }}
+        transition={{ ease: 'easeOut', duration: 0.7 }}
+      >
+        <Layout>
+          <BigTextWrapper>
+            <Typography Title>나의 오늘을</Typography>
+          </BigTextWrapper>
+          <BigTextWrapper2>
+            <Typography Title>푸르게 기록하다.</Typography>
+          </BigTextWrapper2>
+          <SmallTextWrapper>
+            <Typography ContentText color='darkGray'>
+              영수증 버려달라는 말은 이제 넣어두세요.
+            </Typography>
+          </SmallTextWrapper>
+          <SmallTextWrapper2>
+            <Typography ContentText color='darkGray'>
+              에코드와 함께 전자영수증을 간편하게 관리해요.
+            </Typography>
+          </SmallTextWrapper2>
+          <ImageWrapper>
+            <Intro_Image></Intro_Image>
+          </ImageWrapper>
+          <ButtonWrapper>
+            <Button onClick={onClickSuccess}>에코드 시작하기</Button>
+          </ButtonWrapper>
+          <LoginWrapper>
+            <SmallQuestion>
+              <Typography ContentText>이미 회원이신가요?</Typography>
+            </SmallQuestion>
+            <SmallLogin>
+              <Typography ContentText color='mainGreen' onClick={onClickSuccess}>
+                로그인
+              </Typography>
+            </SmallLogin>
+          </LoginWrapper>
+        </Layout>
+      </motion.div>
+    </>
   );
 };
 
 export default Intro;
-

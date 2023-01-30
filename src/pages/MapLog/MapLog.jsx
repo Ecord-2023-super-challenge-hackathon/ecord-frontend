@@ -8,6 +8,7 @@ import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
 import axios from 'axios';
 import leaf from './leaf.png';
 import map from './Group 6261.png';
+import { motion } from 'framer-motion';
 
 const AllWrapper = styled.div`
   width: 100%;
@@ -102,42 +103,49 @@ const MapLog = ({ isOpen, setIsOpen }) => {
 
   return (
     <>
-      <AllWrapper isOpen={isOpen}>
-        <AllLayout>
-          <DaySelectWrapper onClick={() => setIsOpen(!isOpen)} style={{ borderRadius: '16px 16px 0px 0px' }}>
-            <Typography contentText color='backgroundWhite'>
-              2022.01.12(화) 확인하기
-            </Typography>
-            {isOpen ? (
-              <IoIosArrowDown size={20} style={{ position: 'absolute', right: '40px', color: 'white' }} />
-            ) : (
-              <IoIosArrowUp size={20} style={{ position: 'absolute', right: '40px', color: 'white' }} />
-            )}
-          </DaySelectWrapper>
-          <MapWrapper>
-            <img
-              src={map}
-              id='myMap'
-              style={{
-                width: '340px',
-                height: '212px',
-                borderRadius: '10px',
-              }}
-            ></img>
-            <MapMemoWrapper>
-              <img src={leaf} style={{ width: '16px', height: '16px', marginRight: '5px' }} />
-              <MapMemo placeholder='나의 푸른 기록을 짧게 남겨보세요.' />
-            </MapMemoWrapper>
-          </MapWrapper>
-          <ReceiptWrapper>
-            <Typography SmallTitleText style={{ marginLeft: '24px' }}>
-              발급한 전자 영수증
-            </Typography>
-          </ReceiptWrapper>
-          <Receipts receipts={receipts} />
-          <FooterNavigate />
-        </AllLayout>
-      </AllWrapper>
+      <motion.div
+        initial={{ x: 50, y: 0, opacity: 0 }}
+        animate={{ x: 0, y: 0, opacity: 1 }}
+        exit={{ x: -50, y: 0, opacity: 0 }}
+        transition={{ ease: 'easeOut', duration: 0.7 }}
+      >
+        <AllWrapper isOpen={isOpen}>
+          <AllLayout>
+            <DaySelectWrapper onClick={() => setIsOpen(!isOpen)} style={{ borderRadius: '16px 16px 0px 0px' }}>
+              <Typography contentText color='backgroundWhite'>
+                2022.01.12(화) 확인하기
+              </Typography>
+              {isOpen ? (
+                <IoIosArrowDown size={20} style={{ position: 'absolute', right: '40px', color: 'white' }} />
+              ) : (
+                <IoIosArrowUp size={20} style={{ position: 'absolute', right: '40px', color: 'white' }} />
+              )}
+            </DaySelectWrapper>
+            <MapWrapper>
+              <img
+                src={map}
+                id='myMap'
+                style={{
+                  width: '340px',
+                  height: '212px',
+                  borderRadius: '10px',
+                }}
+              ></img>
+              <MapMemoWrapper>
+                <img src={leaf} style={{ width: '16px', height: '16px', marginRight: '5px' }} />
+                <MapMemo placeholder='나의 푸른 기록을 짧게 남겨보세요.' />
+              </MapMemoWrapper>
+            </MapWrapper>
+            <ReceiptWrapper>
+              <Typography SmallTitleText style={{ marginLeft: '24px' }}>
+                발급한 전자 영수증
+              </Typography>
+            </ReceiptWrapper>
+            <Receipts receipts={receipts} />
+            <FooterNavigate />
+          </AllLayout>
+        </AllWrapper>
+      </motion.div>
     </>
   );
 };

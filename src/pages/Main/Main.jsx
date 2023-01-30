@@ -9,6 +9,7 @@ import Pusher from 'pusher-js';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import PopReciept from '../../component/PopReciept/PopReciept';
+import { motion } from 'framer-motion';
 
 const Main = () => {
   const [state, setState] = useState(null);
@@ -53,14 +54,23 @@ const Main = () => {
   }, [state]);
 
   return (
-    <Layout>
-      {state && <PopReciept state={state} setState={setState} />}
-      <SummaryInfo />
-      <MainFooter favorites={favorites} />
-      <RecentReciept />
-      <FooterNavigate />
-      <Receipts receipts={receipts} />
-    </Layout>
+    <>
+      <motion.div
+        initial={{ x: 50, y: 0, opacity: 0 }}
+        animate={{ x: 0, y: 0, opacity: 1 }}
+        exit={{ x: -50, y: 0, opacity: 0 }}
+        transition={{ ease: 'easeOut', duration: 0.7 }}
+      >
+        <Layout>
+          {state && <PopReciept state={state} setState={setState} />}
+          <SummaryInfo />
+          <MainFooter favorites={favorites} />
+          <RecentReciept />
+          <FooterNavigate />
+          <Receipts receipts={receipts} />
+        </Layout>
+      </motion.div>
+    </>
   );
 };
 
