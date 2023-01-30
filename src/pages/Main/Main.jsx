@@ -11,7 +11,7 @@ import { useNavigate } from 'react-router-dom';
 import PopReciept from '../../component/PopReciept/PopReciept';
 
 const Main = () => {
-  const [state, setState] = useState(undefined);
+  const [state, setState] = useState(null);
   const [receipts, setReceipts] = useState([]);
   const [favorites, setFavorites] = useState([]);
   const navigate = useNavigate();
@@ -54,7 +54,7 @@ const Main = () => {
 
   return (
     <Layout>
-      <PopReciept state={state} setState={setState} />
+      {state && <PopReciept state={state} setState={setState} />}
       <SummaryInfo />
       <MainFooter favorites={favorites} />
       <RecentReciept />
