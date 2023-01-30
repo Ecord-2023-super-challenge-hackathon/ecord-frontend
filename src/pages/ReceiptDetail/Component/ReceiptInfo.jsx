@@ -36,7 +36,7 @@ const ReceiptInfo = (props) => {
           {props.address}
         </Typography>
         <TitleMargin>
-          <Typography SmallTitleText>{props.storeName}</Typography>
+          <Typography>{props.storeName}</Typography>
         </TitleMargin>
         <MenuWrapper>
           {MenuList &&

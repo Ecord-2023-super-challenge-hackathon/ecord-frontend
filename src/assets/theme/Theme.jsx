@@ -14,7 +14,6 @@ const colors = {
   favoriteGray: '#6F7276',
   PayDayColor: '#A4A4B8',
   calendarBlue: '#444867',
-  SpecialGreen: '#327676',
 };
 
 const shadow = {
@@ -25,24 +24,24 @@ const shadow = {
 
 const font = {
   Title: `
-      font-family: 'Pretendard-bold';
+      font-family: 'Pretendard-regular';
       font-weight: 700;
       font-size: 32px;
       line-height: 40px;
     `,
   MainTitle: `
-      font-family: 'Pretendard-bold';
+      font-family: 'Pretendard-regular';
       font-weight: 700;
       font-size: 18px;
       line-height: 27px;
     `,
   InputText: `
-      font-family: 'Pretendard-medium';
+      font-family: 'Pretendard-regular';
       font-weight: 500;
       font-size: 15px;
     `,
   ButtonText: `
-      font-family: 'Pretendard-bold';
+      font-family: 'Pretendard-regular';
       font-weight: 700;
       font-size: 15px;
     `,
@@ -58,7 +57,7 @@ const font = {
     font-size: 12px;
   `,
   ContentText: `
-      font-family: 'Pretendard-medium';
+      font-family: 'Pretendard-regular';
       font-weight: 500;
       font-size: 14px;
       line-height: 20px;
@@ -69,7 +68,7 @@ const font = {
       font-size: 10px;
     `,
   SmallTitleText: `
-      font-family: 'Pretendard-bold';
+      font-family: 'Pretendard-regular';
     font-weight: 700;
     font-size: 16px;
   `,
@@ -79,13 +78,13 @@ const font = {
     font-size: 9px;
   `,
   BoldText: `
-  font-family: 'Pretendard-bold';
+  font-family: 'Pretendard-regular';
   font-weight: 700;
   font-size: 12px;
   `,
   favoriteSmall: `
-     font-family: 'Pretendard-semibold';
-      font-weight: 600;
+    font-family: 'Pretendard-regular';
+    font-weight: 600;
     font-size: 13px;
     line-height: 13px;
   `,
@@ -96,27 +95,28 @@ const font = {
     line-height: 13px;
   `,
   subTitle: `
-      font-family: 'Pretendard-bold';
+      font-family: 'Pretendard-regular';
    font-weight: 700;
    font-size: 16px;
    line-height: 13px;
   `,
   receiptTitle: `
-  font-family: 'Pretendard-bold';
+  font-family: 'Pretendard-regular';
     font-weight: 700;
     font-size: 13px;
     line-height: 16px;  
   `,
+
   receiptTotal: `
-   font-family: 'Pretendard-semibold';
-      font-weight: 600;
+  font-family: 'Pretendard-regular';
+    font-weight: 600;
     font-size: 11px;
     line-height: 16px;
   `,
 
   receiptSmall: `
-   font-family: 'Pretendard-semibold';
-      font-weight: 600;
+  font-family: 'Pretendard-regular';
+    font-weight: 600;
     font-size: 10px;
     line-height: 16px;
     color: ${colors.receiptGray};
@@ -130,7 +130,7 @@ const font = {
     color: ${colors.receiptGray};
   `,
   calendarTitle: `
-  font-family: 'Pretendard-medium';
+  font-family: 'Pretendard-regular';
     font-weight: 500;
     font-size: 12px;
   `,

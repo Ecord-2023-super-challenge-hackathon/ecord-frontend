@@ -12,12 +12,10 @@ import { motion, useDragControls } from 'framer-motion';
 import { saveAs } from 'file-saver';
 import domToImage from 'dom-to-image';
 import Stickers from '../../component/Stickers/Stickers';
+import emptyImg from './EmptyImg.png';
 import { useNavigate } from 'react-router-dom';
-import { ReactComponent as Deco } from './DecoButton.svg';
-import { ReactComponent as ImageIcon } from './ImageIcon.svg';
+import Deco from './DecoButton.png';
 import photo from './image 204.png';
-import Margin from '../../component/Margin/Margin';
-import Flex from '../../component/Flex/Flex';
 
 const Sticker = styled(motion.img)`
   cursor: pointer;
@@ -58,7 +56,6 @@ const ImgSection = styled.div`
   width: 236px;
   height: 124px;
   margin-top: 24px;
-  border-radius: 5px;
   background-color: #e0efef;
   border: 1.4px dashed #327676;
   display: flex;
@@ -90,10 +87,13 @@ const DecoButton = styled.button`
   justify-content: center;
   align-items: center;
   border: none;
-  padding-top: 3px;
-  padding-left: 3px;
-  cursor: pointer;
-  box-shadow: 4px 4px 8px rgba(77, 140, 141, 0.5);
+`;
+
+const ButtonImg = styled.img`
+  width: 34px;
+  height: 34px;
+  margin-top: 3px;
+  margin-left: 3px;
 `;
 
 const Img = styled.img``;
@@ -178,7 +178,7 @@ const ReceiptDetail = () => {
         exit={{ x: -50, y: 0, opacity: 0 }}
         transition={{ ease: 'easeOut', duration: 0.7 }}
       >
-        <Layout color='#f1f1f1'>
+        <Layout gray>
           <TitleWrapper>
             <FiArrowLeft style={{ cursor: 'pointer' }} size={22} onClick={navigateToBefore} />
             <Typography SmallTitleText>영수증 상세보기</Typography>
@@ -215,13 +215,7 @@ const ReceiptDetail = () => {
                     {isImage ? (
                       <Img className='receiptImg' alt='receiptImg' style={{ height: '140px' }} src={photo} />
                     ) : (
-                      <Flex flexCenter column>
-                        <ImageIcon />
-                        <Margin height='5' />
-                        <Typography calendarTitle color='SpecialGreen'>
-                          사진을 넣어 영수증을 꾸며보세요!
-                        </Typography>
-                      </Flex>
+                      <Img style={{ width: '158px' }} className='receiptImg' alt='receiptImg' src={emptyImg} />
                     )}
                   </ImgSection>
                 </ImgWrapper>
@@ -247,7 +241,7 @@ const ReceiptDetail = () => {
                 </AlignWrapper>
               </ReceiptPaper>
               <DecoButton type='button' onClick={() => setOnSticker(!onSticker)}>
-                <Deco />
+                <ButtonImg src={Deco} />
               </DecoButton>
             </AllWrapper>
           </div>
