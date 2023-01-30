@@ -13,27 +13,24 @@ const LogoWrapper = styled.div`
 `;
 
 const Photo = styled.img`
-  height: 34px;
-  width: 34px;
+  width: 73px;
+  height: 73px;
   border-radius: 100%;
   object-fit: cover;
   overflow: hidden;
 `;
 
-const Favorite = ({ data, id }) => {
-  const { brand_name, receipt_img_url, product_name } = data;
-  const color = ['#c6ded4', '#dfe4ee', '#dacde4'];
+const Favorite = ({ data }) => {
+  const { img, name, address } = data;
 
   return (
     <Flex flexCenter column>
-      <LogoWrapper color={color[id]}>
-        <Photo src={`${process.env.REACT_APP_API}${receipt_img_url}`} />
-      </LogoWrapper>
+      <Photo src={img} />
       <Margin width='95' height='12' />
-      <Typography favoriteSmall>{product_name}</Typography>
+      <Typography favoriteSmall>{name}</Typography>
       <Margin height='2' />
       <Typography favoriteVerySmall color='favoriteGray'>
-        {brand_name}
+        {address}
       </Typography>
     </Flex>
   );
