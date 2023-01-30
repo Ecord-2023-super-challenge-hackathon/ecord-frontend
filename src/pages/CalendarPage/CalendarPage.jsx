@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Calendar from 'react-calendar';
 import './Calendar.css'; // css import
 import styled from 'styled-components';
@@ -8,10 +8,12 @@ import Margin from '../../component/Margin/Margin';
 import FooterNavigate from '../../component/FooterNavigate';
 import Flex from '../../component/Flex/Flex';
 import PurchaseBox from './Component/PurchaseBox';
+import axios from 'axios';
+import UpScrollBox from './Component/UpScrollBox';
 
 const InfoWrapper = styled.div`
   width: 100%;
-  height: 60%;
+  height: 400px;
   background-color: #f3f9f6;
   display: flex;
   flex-direction: column;
@@ -25,8 +27,16 @@ const StyledHr = styled.hr`
   border: 0;
 `;
 
+const ScrollBox = styled.div`
+  width: 312px;
+  height: 300px;
+  overflow: scroll;
+`;
+
 const CalendarPage = () => {
   const [day, onChange] = useState(new Date());
+  const [receipts, setReceipts] = useState([]);
+  const [selectedReceipt, setSelectedReceipt] = useState([]);
 
   function leftPad(value) {
     if (value >= 10) {
@@ -36,13 +46,32 @@ const CalendarPage = () => {
     return `0${value}`;
   }
 
-  function toStringByFormatting(source, delimiter = '-') {
+  function toStringByFormatting(source, delimiter = '.') {
     const year = source.getFullYear();
     const month = leftPad(source.getMonth() + 1);
     const day = leftPad(source.getDate());
 
     return [year, month, day].join(delimiter);
   }
+
+  useEffect(() => {
+    const user_index = localStorage.getItem('user_index');
+    console.log(process.env.REACT_APP_API);
+    axios
+      .get(`${process.env.REACT_APP_API}/users/${user_index}/receipts`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+      })
+      .then((r) => {
+        setReceipts(r.data);
+      });
+  }, []);
+
+  useEffect(() => {
+    setSelectedReceipt(receipts.filter((r) => r.date === toStringByFormatting(day)));
+    console.log(selectedReceipt);
+  }, [day]);
 
   return (
     <Layout>
@@ -62,10 +91,26 @@ const CalendarPage = () => {
         <Margin height='15' />
         <StyledHr />
         <Margin height='25' />
-        <PurchaseBox />
-        <PurchaseBox />
-        <PurchaseBox />
+        {selectedReceipt.length === 0 ? (
+          <>
+            <Margin height='20' />
+            <Typography BoldText>결제 내역이 없어요.</Typography>
+          </>
+        ) : (
+          <ScrollBox>
+            {selectedReceipt.map((data) => (
+              <PurchaseBox
+                id={data.receipt_index}
+                data={data}
+                key={data.receipt_index}
+                day={toStringByFormatting(day)}
+              />
+            ))}
+            <Margin height='20' />
+          </ScrollBox>
+        )}
       </InfoWrapper>
+      <UpScrollBox />
       <FooterNavigate />
     </Layout>
   );

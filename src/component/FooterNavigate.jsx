@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { MdHomeFilled } from 'react-icons/md';
 import { RiCalendar2Line } from 'react-icons/ri';
 import { HiOutlineUser } from 'react-icons/hi';
@@ -60,9 +60,16 @@ const FooterNavigate = () => {
   };
 
   //클릭시 색을 바꿀때 이를 담당하는 색깔 변수들
-  const [homeColor, setHomeColor] = React.useState('#05be70');
+  const [homeColor, setHomeColor] = React.useState('#1D1E1F');
   const [calColor, setCalColor] = React.useState('#1D1E1F');
   const [myColor, setMyColor] = React.useState('#1D1E1F');
+
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.pathname === '/main') setHomeColor('#05be70');
+    if (location.pathname === '/calendar') setCalColor('#05be70');
+  }, []);
 
   return (
     <>
@@ -71,9 +78,6 @@ const FooterNavigate = () => {
           <EachWrapper
             style={{ color: homeColor }}
             onClick={() => {
-              setHomeColor('#05be70');
-              setCalColor('#1D1E1F');
-              setMyColor('#1D1E1F');
               navigate('/main');
             }}
           >
@@ -88,7 +92,7 @@ const FooterNavigate = () => {
               setHomeColor('#1D1E1F');
               setCalColor('#05be70');
               setMyColor('#1D1E1F');
-              navigate('/main');
+              navigate('/calendar');
             }}
           >
             <RiCalendar2Line id='IconCssCal' />
