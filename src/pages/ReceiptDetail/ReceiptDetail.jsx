@@ -16,6 +16,7 @@ import { useNavigate } from 'react-router-dom';
 import { ReactComponent as Deco } from './DecoButton.svg';
 import { ReactComponent as ImageIcon } from './ImageIcon.svg';
 import photo from './lee.jpeg';
+import heart from './heart.png';
 import Margin from '../../component/Margin/Margin';
 import Flex from '../../component/Flex/Flex';
 
@@ -126,6 +127,7 @@ const ReceiptDetail = () => {
 
   // 여기까지 스티커
   const { receiptIndex } = useParams();
+  console.log(receiptIndex);
   const [receiptDetail, setReceiptDetail] = useState([]);
 
   let receiptLength;
@@ -215,12 +217,21 @@ const ReceiptDetail = () => {
                 <ImgWrapper>
                   <ImgSection onClick={() => setIsImage(true)}>
                     {isImage ? (
-                      <Img
-                        className='receiptImg'
-                        alt='receiptImg'
-                        style={{ height: '125px', borderRadius: '10px' }}
-                        src={photo}
-                      />
+                      receiptIndex === '106' ? (
+                        <Img
+                          className='receiptImg'
+                          alt='receiptImg'
+                          style={{ height: '124px', borderRadius: '10px' }}
+                          src={heart}
+                        />
+                      ) : (
+                        <Img
+                          className='receiptImg'
+                          alt='receiptImg'
+                          style={{ height: '125px', borderRadius: '10px' }}
+                          src={photo}
+                        />
+                      )
                     ) : (
                       <Flex flexCenter column>
                         <ImageIcon />
