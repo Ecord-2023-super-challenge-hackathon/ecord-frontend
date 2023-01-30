@@ -10,6 +10,7 @@ import Flex from '../../component/Flex/Flex';
 import PurchaseBox from './Component/PurchaseBox';
 import axios from 'axios';
 import UpScrollBox from './Component/UpScrollBox';
+import MapLog from '../MapLog/MapLog';
 
 const InfoWrapper = styled.div`
   width: 100%;
@@ -34,6 +35,7 @@ const ScrollBox = styled.div`
 `;
 
 const CalendarPage = () => {
+  const [isOpen, setIsOpen] = useState(false);
   const [day, onChange] = useState(new Date());
   const [receipts, setReceipts] = useState([]);
   const [selectedReceipt, setSelectedReceipt] = useState([]);
@@ -110,8 +112,8 @@ const CalendarPage = () => {
           </ScrollBox>
         )}
       </InfoWrapper>
-      <UpScrollBox />
-      <FooterNavigate />
+      <MapLog isOpen={isOpen} setIsOpen={setIsOpen} />
+      {/* <UpScrollBox /> */}
     </Layout>
   );
 };
