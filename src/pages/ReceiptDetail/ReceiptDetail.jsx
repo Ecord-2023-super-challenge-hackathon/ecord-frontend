@@ -168,74 +168,83 @@ const ReceiptDetail = () => {
   };
 
   return (
-    <Layout gray>
-      <TitleWrapper>
-        <FiArrowLeft style={{ cursor: 'pointer' }} size={22} onClick={navigateToBefore} />
-        <Typography SmallTitleText>영수증 상세보기</Typography>
-        <FiDownload style={{ cursor: 'pointer' }} size={20} className='downBtn' onClick={onDownloadBtn} />
-      </TitleWrapper>
-      <div className='card' ref={cardRef} style={{ position: 'relative' }}>
-        <Stickers
-          onSticker={onSticker}
-          setOnSticker={setOnSticker}
-          stickerList={stickerList}
-          setStickerOnList={setStickerOnList}
-          stickerOnList={stickerOnList}
-        />
+    <>
+      <motion.div
+        initial={{ x: 50, y: 0, opacity: 0 }}
+        animate={{ x: 0, y: 0, opacity: 1 }}
+        exit={{ x: -50, y: 0, opacity: 0 }}
+        transition={{ ease: 'easeOut', duration: 0.7 }}
+      >
+        <Layout gray>
+          <TitleWrapper>
+            <FiArrowLeft style={{ cursor: 'pointer' }} size={22} onClick={navigateToBefore} />
+            <Typography SmallTitleText>영수증 상세보기</Typography>
+            <FiDownload style={{ cursor: 'pointer' }} size={20} className='downBtn' onClick={onDownloadBtn} />
+          </TitleWrapper>
+          <div className='card' ref={cardRef} style={{ position: 'relative' }}>
+            <Stickers
+              onSticker={onSticker}
+              setOnSticker={setOnSticker}
+              stickerList={stickerList}
+              setStickerOnList={setStickerOnList}
+              stickerOnList={stickerOnList}
+            />
 
-        {stickerOnList.map(
-          (a, i) =>
-            a && (
-              <Sticker
-                dragMomentum={false}
-                dragElastic={0.1}
-                whileDrag={{ scale: 1.2 }}
-                drag
-                dragControls={controls}
-                whileTap={{ cursor: 'grabbing' }}
-                key={i}
-                src={`${process.env.REACT_APP_API}${stickerList[i].sticker_url}`}
-              />
-            ),
-        )}
-        <AllWrapper>
-          <ReceiptPaper>
-            <ImgWrapper>
-              <ImgSection onClick={() => setIsImage(true)}>
-                {isImage ? (
-                  <Img className='receiptImg' alt='receiptImg' style={{ height: '140px' }} src={photo} />
-                ) : (
-                  <Img style={{ width: '158px' }} className='receiptImg' alt='receiptImg' src={emptyImg} />
-                )}
-              </ImgSection>
-            </ImgWrapper>
+            {stickerOnList.map(
+              (a, i) =>
+                a && (
+                  <Sticker
+                    dragMomentum={false}
+                    dragElastic={0.1}
+                    whileDrag={{ scale: 1.2 }}
+                    drag
+                    dragControls={controls}
+                    whileTap={{ cursor: 'grabbing' }}
+                    key={i}
+                    src={`${process.env.REACT_APP_API}${stickerList[i].sticker_url}`}
+                  />
+                ),
+            )}
+            <AllWrapper>
+              <ReceiptPaper>
+                <ImgWrapper>
+                  <ImgSection onClick={() => setIsImage(true)}>
+                    {isImage ? (
+                      <Img className='receiptImg' alt='receiptImg' style={{ height: '140px' }} src={photo} />
+                    ) : (
+                      <Img style={{ width: '158px' }} className='receiptImg' alt='receiptImg' src={emptyImg} />
+                    )}
+                  </ImgSection>
+                </ImgWrapper>
 
-            <AlignWrapper>
-              <ReceiptInfo
-                address={receiptDetail.address}
-                storeName={receiptDetail.brand_name}
-                MenuList={receiptDetail.product_name}
-                costList={receiptDetail.cost}
-              />
-              <VatInfo
-                taxablePrice={receiptDetail.serial_number}
-                vat={receiptDetail.receipt_index}
-                totalVat={receiptDetail.total_cost}
-              />
-              <CardInfo
-                cardName={receiptDetail.card_company}
-                cardNumber={receiptDetail.card_number}
-                payMent='일시불'
-                payPrice={receiptDetail.total_cost}
-              />
-            </AlignWrapper>
-          </ReceiptPaper>
-          <DecoButton type='button' onClick={() => setOnSticker(!onSticker)}>
-            <ButtonImg src={Deco} />
-          </DecoButton>
-        </AllWrapper>
-      </div>
-    </Layout>
+                <AlignWrapper>
+                  <ReceiptInfo
+                    address={receiptDetail.address}
+                    storeName={receiptDetail.brand_name}
+                    MenuList={receiptDetail.product_name}
+                    costList={receiptDetail.cost}
+                  />
+                  <VatInfo
+                    taxablePrice={receiptDetail.serial_number}
+                    vat={receiptDetail.receipt_index}
+                    totalVat={receiptDetail.total_cost}
+                  />
+                  <CardInfo
+                    cardName={receiptDetail.card_company}
+                    cardNumber={receiptDetail.card_number}
+                    payMent='일시불'
+                    payPrice={receiptDetail.total_cost}
+                  />
+                </AlignWrapper>
+              </ReceiptPaper>
+              <DecoButton type='button' onClick={() => setOnSticker(!onSticker)}>
+                <ButtonImg src={Deco} />
+              </DecoButton>
+            </AllWrapper>
+          </div>
+        </Layout>
+      </motion.div>
+    </>
   );
 };
 

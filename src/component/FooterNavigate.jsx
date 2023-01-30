@@ -55,8 +55,17 @@ const EachWrapper = styled.div`
 const FooterNavigate = () => {
   const navigate = useNavigate();
 
-  const navigateTofile = () => {
-    navigate('/');
+  const navigateToHome = () => {
+    navigate('/main');
+  };
+
+  const naviageToCal = () => {
+    navigate('/calendar');
+  };
+
+  //홈 화면 만들어지면 바꿔야함.
+  const navigateToMy = () => {
+    navigate('/main');
   };
 
   //클릭시 색을 바꿀때 이를 담당하는 색깔 변수들
@@ -88,7 +97,7 @@ const FooterNavigate = () => {
               setHomeColor('#1D1E1F');
               setCalColor('#05be70');
               setMyColor('#1D1E1F');
-              navigate('/main');
+              navigate('/calendar');
             }}
           >
             <RiCalendar2Line id='IconCssCal' />
