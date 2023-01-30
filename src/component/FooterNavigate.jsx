@@ -5,6 +5,8 @@ import { MdHomeFilled } from 'react-icons/md';
 import { RiCalendar2Line } from 'react-icons/ri';
 import { HiOutlineUser } from 'react-icons/hi';
 import Typography from './Typography/Typography';
+import { toast } from 'react-simple-toasts';
+import Toast from './Toast/Toast';
 
 const Container = styled.div`
   position: fixed;
@@ -119,6 +121,7 @@ const FooterNavigate = () => {
               setHomeColor('#1D1E1F');
               setCalColor('#1D1E1F');
               setMyColor('#05be70');
+              Toast('아직 준비중인 페이지입니다.');
               navigate('/main');
             }}
           >
