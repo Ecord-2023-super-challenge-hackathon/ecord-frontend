@@ -28,7 +28,6 @@ const MenuWrapper = styled.div`
 
 const ReceiptInfo = (props) => {
   const { MenuList, costList } = props;
-  console.log(MenuList);
 
   return (
     <>

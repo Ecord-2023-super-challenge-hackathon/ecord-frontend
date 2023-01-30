@@ -17,6 +17,7 @@ const AllWrapper = styled.div`
   justify-content: center;
   background-color: #ffffff;
   padding-bottom: 80px;
+
 `;
 
 const AllLayout = styled.div`
