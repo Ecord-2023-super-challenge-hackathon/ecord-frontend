@@ -8,6 +8,10 @@ import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
 import axios from 'axios';
 import leaf from './leaf.png';
 import map from './Group 6261.png';
+import pin from './pin.png';
+import { motion } from 'framer-motion';
+
+const { kakao } = window;
 
 const AllWrapper = styled.div`
   width: 100%;
@@ -115,12 +119,22 @@ const MapLog = ({ isOpen, setIsOpen }) => {
             )}
           </DaySelectWrapper>
           <MapWrapper>
+            {isOpen && (
+              <motion.img
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{ ease: 'easeOut', delay: 1.5, stiffness: 260, damping: 20 }}
+                src={pin}
+                style={{ position: 'absolute', top: '180px' }}
+              />
+            )}
             <img
               src={map}
               id='myMap'
               style={{
+                objectFit: 'cover',
                 width: '340px',
-                height: '212px',
+                height: '200px',
                 borderRadius: '10px',
               }}
             ></img>

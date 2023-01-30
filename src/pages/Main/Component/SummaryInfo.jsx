@@ -37,6 +37,7 @@ const InfoBox = styled.div`
   align-items: center;
   justify-content: space-around;
 `;
+
 const InfoBoxTypoWrapper = styled.div`
   width: 220px;
   height: auto;
