@@ -3,11 +3,12 @@ import styled from 'styled-components';
 import Typography from '../../../component/Typography/Typography';
 import { buildStyles, CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
-import Margin from '../../../component/Margin/Margin';
 
 //요약 정보를 담는 전체적인 Wrapper
 const Wrapper = styled.div`
   width: 100%;
+  height: 260px;
+  margin-top: 50px;
 `;
 
 //인사말과 관련한 컴포넌트 위치 조정해주는 Wrapper
@@ -15,7 +16,6 @@ const TypoWrapper = styled.div`
   width: 100%;
   height: auto;
   padding-left: 22px;
-  padding-right: 22px;
   padding-top: 50px;
 `;
 
@@ -28,7 +28,7 @@ const CarbonTypoWrapper = styled.div`
 
 // 환급금은 관련된 정보를 보여줄 Box
 const InfoBox = styled.div`
-  width: 100%;
+  width: 316px;
   height: 91px;
   margin-top: 25px;
   background-color: #05be70;
@@ -37,7 +37,6 @@ const InfoBox = styled.div`
   align-items: center;
   justify-content: space-around;
 `;
-
 const InfoBoxTypoWrapper = styled.div`
   width: 220px;
   height: auto;
@@ -115,7 +114,6 @@ const SummaryInfo = () => {
             </CircleProgressBarWrapper>
           </InfoBox>
         </TypoWrapper>
-        <Margin height='30' />
       </Wrapper>
     </>
   );

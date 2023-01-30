@@ -10,13 +10,23 @@ import leaf from './leaf.png';
 
 const { kakao } = window;
 
-const AllLayout = styled.div`
+const AllWrapper = styled.div`
   width: 100%;
-  height: 700px;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  background-color: #ffffff;
+`;
+
+const AllLayout = styled.div`
+  width: 360px;
+  height: auto;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   background-color: '#FFFFFF';
+  display: flex;
+  flex-wrap: wrap;
 `;
 
 const DaySelectWrapper = styled.div`
@@ -118,36 +128,38 @@ const MapLog = () => {
 
   return (
     <>
-      <Layout>
-        <DaySelectWrapper>
-          <Typography contentText color='backgroundWhite'>
-            2022.01.12(화) 확인하기
-          </Typography>
-          <IoIosArrowDown size={25} style={{ position: 'absolute', right: '70px', color: 'white' }} />
-        </DaySelectWrapper>
-        <MapWrapper>
-          {' '}
-          <div
-            id='myMap'
-            style={{
-              width: '312px',
-              height: '212px',
-              borderRadius: '10px',
-            }}
-          ></div>
-          <MapMemoWrapper>
-            <img src={leaf} style={{ width: '16px', height: '16px', marginRight: '5px' }} />
-            <MapMemo placeholder='나의 푸른 기록을 짧게 남겨보세요.' />
-          </MapMemoWrapper>
-        </MapWrapper>
-        <ReceiptWrapper>
-          <Typography SmallTitleText style={{ marginLeft: '24px' }}>
-            발급한 전자 영수증
-          </Typography>
-        </ReceiptWrapper>
-        <Receipts receipts={receipts} />
-        <FooterNavigate />
-      </Layout>
+      <AllWrapper>
+        <AllLayout>
+          <DaySelectWrapper>
+            <Typography contentText color='backgroundWhite'>
+              2022.01.12(화) 확인하기
+            </Typography>
+            <IoIosArrowDown size={25} style={{ position: 'absolute', right: '70px', color: 'white' }} />
+          </DaySelectWrapper>
+          <MapWrapper>
+            {' '}
+            <div
+              id='myMap'
+              style={{
+                width: '312px',
+                height: '212px',
+                borderRadius: '10px',
+              }}
+            ></div>
+            <MapMemoWrapper>
+              <img src={leaf} style={{ width: '16px', height: '16px', marginRight: '5px' }} />
+              <MapMemo placeholder='나의 푸른 기록을 짧게 남겨보세요.' />
+            </MapMemoWrapper>
+          </MapWrapper>
+          <ReceiptWrapper>
+            <Typography SmallTitleText style={{ marginLeft: '24px' }}>
+              발급한 전자 영수증
+            </Typography>
+          </ReceiptWrapper>
+          <Receipts receipts={receipts} />
+          <FooterNavigate />
+        </AllLayout>
+      </AllWrapper>
     </>
   );
 };
